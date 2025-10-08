@@ -31,5 +31,7 @@ void GUI::renderComponentsPanel()
         // ADICIONAR PESSOA
     }
 
+    ImGui::Separator();
+
     ImGui::End();
 }
