@@ -64,7 +64,7 @@ e rode **ArvoreGen.exe**
 
 ### Rodando do zero
 
-> [!WARNING] REQUISITOS
+> [!IMPORTANT] REQUISITOS
 > Para realizar o processo de build do zero é necessário ter [CMake](https://cmake.org/download/) instalado
 
 1. Faça o download do projeto como mostrado acima.
