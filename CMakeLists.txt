@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(MyApp LANGUAGES CXX)
+project(ArvoreGen LANGUAGES CXX)
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
@@ -9,10 +9,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(OpenGL REQUIRED)
 
 # Add GLFW subdirectory
-add_subdirectory(lib/glfw)
+add_subdirectory(vendor/glfw)
 
 # Set ImGui directory
-set(IMGUI_DIR ${CMAKE_SOURCE_DIR}/lib/imgui)
+set(IMGUI_DIR ${CMAKE_SOURCE_DIR}/vendor/imgui)
 
 
 # List ImGui source files
@@ -42,18 +42,18 @@ target_link_libraries(imgui PUBLIC
 )
 
 # Create the executable
-add_executable(MyApp
-    src/main.cpp
-    src/App.cpp
+add_executable(ArvoreGen
+    src/core/Window/Window.cpp
+    src/core/App.cpp
+    src/core/Run.cpp
+    src/core/main.cpp
 
-    src/GUI/Theme/colors.cpp
-    src/GUI/Theme/style.cpp
+    src/gui/theme/StyleManager.cpp
+    src/gui/GuiLayer.cpp
+    src/gui/janelas/JanelaControles.cpp
+    src/gui/janelas/JanelaVisualiza.cpp
     
-    src/GUI/GUI.cpp
-
-    src/GUI/painelControles.cpp
-    src/GUI/painelVisualizacao.cpp
 )
 
 # Link the executable with ImGui and dependencies
-target_link_libraries(MyApp PRIVATE imgui)
+target_link_libraries(ArvoreGen PRIVATE imgui)

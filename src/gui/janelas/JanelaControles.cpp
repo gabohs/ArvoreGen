@@ -1,8 +1,8 @@
-#include "GUI.h"
+#include "JanelaControles.h"
 
-void GUI::renderComponentsPanel()
+void JControles::Renderiza()
 {
-    ImGui::Begin("Controles", nullptr, ImGuiWindowFlags_NoTitleBar);
+    ImGui::Begin(m_Nome.c_str(), nullptr, ImGuiWindowFlags_NoTitleBar);
     
     ImGui::Text("Adicionar pessoa");
     ImGui::Dummy(ImVec2(0, 5));
@@ -13,13 +13,13 @@ void GUI::renderComponentsPanel()
 
     static bool m, f;
 
-    ImGui::TextColored(Colors::Gray, "Nome:");
+    ImGui::Text("Nome:");
     ImGui::InputText("##Nome", nome, sizeof(nome));
 
-    ImGui::TextColored(Colors::Gray, "Data Nascimento:");
+    ImGui::Text("Data Nascimento:");
     ImGui::InputText("##DataNasc", d, sizeof(d));
 
-    ImGui::TextColored(Colors::Gray, "Gênero:");
+    ImGui::Text("Gênero:");
     ImGui::Checkbox("Homem", &m);
     ImGui::SameLine();
     ImGui::Checkbox("Mulher", &f);
