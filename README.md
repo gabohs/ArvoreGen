@@ -39,7 +39,9 @@ Implementar um sistema em C++ para representar e manipular uma árvore genealóg
 
 - **Visando facilitar o processo para o professor, foi feito o upload da pasta build com o executável já buildado aqui no repositório.**
 
-Então, faça o download do projeto, clicando no botão azul `Code` e depois em `Download ZIP`
+Então, faça o download do projeto, [clicando aqui!](https://github.com/gabohs/ArvoreGen/archive/refs/heads/main.zip)
+
+se o link não funcionar, clique no botão azul `Code` e depois em `Download ZIP`
 
 ![DownloadBotao](imagens/botaoDownload.png)
 
