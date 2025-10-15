@@ -50,7 +50,7 @@ ou, clone com o git rodando no terminal o comando:
 ```sh
 git clone --recursive https://github.com/gabohs/ArvoreGen.git
 ```
-<small>OBS: --recursive é necessário para clonar também o repositório do GLFW (biblioteca usada para gerenciar o contexto OpenGL), que é tratado como um submódulo neste projeto</small>
+<small> <small>OBS: --recursive é necessário para clonar também o repositório do GLFW (biblioteca usada para gerenciar o contexto OpenGL), que é tratado como um submódulo neste projeto</small> </small>
 
 Após isso, vá até:
 
