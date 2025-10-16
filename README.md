@@ -1,16 +1,19 @@
 # Aplicativo de Árvore Genealógica
 
-- Projeto feito por Emanuel e Gabriel para a disciplina de Linguagem de Programação do curso de ADS no IFRS
+- Projeto feito por Emanuel e Gabriel para a disciplina de Linguagem de Programação (2º semestre) do curso de ADS no IFRS
+
+![App arvore gen](imagens/app.png)
+
+<small>Foto do estado atual do projeto (16/10/2025)</small>
 
 ## Enunciado do Trabalho
 
 ```
-
 Objetivo: Implementar um sistema em C++ para representar e manipular uma árvore genealógica, aplicando estruturas de dados hierárquicas, como árvores, ou listas e filas.
 
 Implementar um sistema em C++ para representar e manipular uma árvore genealógica, aplicando estruturas de dados hierárquicas, como árvores, ou listas e filas.
 
-#### Funcionalidades obrigatórias
+Funcionalidades obrigatórias
 
 - Adicionar pessoa (nome, ano de nascimento, gênero).
 
@@ -22,7 +25,7 @@ Implementar um sistema em C++ para representar e manipular uma árvore genealóg
 
 - Buscar pessoa por nome.
 
-#### Funcionalidades opcionais
+Funcionalidades opcionais
 
 - Exibir nível de parentesco entre duas pessoas (distância em nós).
 
@@ -50,6 +53,7 @@ ou, clone com o git rodando no terminal o comando:
 ```sh
 git clone --recursive https://github.com/gabohs/ArvoreGen.git
 ```
+
 <small> <small>OBS: --recursive é necessário para clonar também o repositório do GLFW (biblioteca usada para gerenciar o contexto OpenGL), que é tratado como um submódulo neste projeto</small> </small>
 
 Após isso, vá até:
@@ -72,9 +76,7 @@ e rode **ArvoreGen.exe**
 
 ## Estrutura do Projeto
 
-Aqui ser
-
-### 
+A estrutura do projeto será detalhada no arquivo [Estrutura.md](Estrutura.md)  
 
 ## Recursos que foram usados no desenvolvimento
 
