@@ -1,0 +1,6 @@
+[ x ] Criar as classes 'Pessoa' e 'ArvoreGenealogica' (concluido, 16/10)
+
+[ ] Getters e setters na classe pessoa (pai, mae e filho)
+
+[ ] Printar, inicialmente, em texto a estrutura da arvore (com relacoes).
+

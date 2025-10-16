@@ -1,10 +1,14 @@
 #include "../GuiLayer.h"
+#include "../../backend/ArvoreGenealogica.h"
+#include "../../backend/Pessoa.h"
 
 #include <string>
 
 class JControles : public IJanela
 {
 public:
+    JControles(ArvoreGenealogica& arvore);
+
     const std::string& GetNome() const override
     {
         return m_Nome;
@@ -24,4 +28,8 @@ public:
 private:
     std::string m_Nome = "Controles";
     bool m_JanelaAberta = true;
+
+    ArvoreGenealogica& m_Arvore;
+
+    void AddPessoaGui(Pessoa* pessoa);
 };

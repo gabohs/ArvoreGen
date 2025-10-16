@@ -53,6 +53,8 @@ add_executable(ArvoreGen
     src/gui/janelas/JanelaControles.cpp
     src/gui/janelas/JanelaVisualiza.cpp
     
+    src/backend/Pessoa.cpp
+    src/backend/ArvoreGenealogica.cpp
 )
 
 # Link the executable with ImGui and dependencies

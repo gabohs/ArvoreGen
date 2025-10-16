@@ -23,7 +23,7 @@ App::App(const DadosApp& dApp)
     }
 
     m_GuiLayer = std::make_unique<GuiLayer>();
-    m_GuiLayer->AddJanela( std::make_shared<JControles>() );
+    m_GuiLayer->AddJanela( std::make_shared<JControles>(m_Arvore) );
     m_GuiLayer->AddJanela( std::make_shared<JVisualizacao>() );
 
     std::cout << dApp.nome << " iniciado com sucesso!\n";
