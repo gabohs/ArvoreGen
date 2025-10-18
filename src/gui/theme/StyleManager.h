@@ -3,6 +3,5 @@
 class Styles
 {
 public:
-    static void Style1();
-    static void Style2();
+    static void Dark();
 };

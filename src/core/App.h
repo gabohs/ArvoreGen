@@ -16,7 +16,7 @@ struct DadosApp
 class App
 {
 public:
-    App(const DadosApp& specification = DadosApp());
+    App(const DadosApp& dApp = DadosApp());
 	~App();
 
     void Run();
@@ -31,6 +31,8 @@ private:
     std::shared_ptr<Window> m_Janela;
     std::unique_ptr<GuiLayer> m_GuiLayer;
     
+    const float tamFonte = 17.f;
+
     bool m_Rodando = false;
 };
 

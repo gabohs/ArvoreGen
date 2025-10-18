@@ -4,10 +4,18 @@
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
 
+#include "../gui/theme/StyleManager.h"
+
+void setup()
+{
+    Styles::Dark();
+}
+
 void App::Run()
 {
     m_Rodando = true;
 
+    setup();
     while(m_Rodando)
     {
         glfwPollEvents();

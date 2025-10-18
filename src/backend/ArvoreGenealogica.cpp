@@ -29,3 +29,8 @@ void ArvoreGenealogica::printPessoas()
     }
     std::cout << "=====================================" << std::endl << std::endl;
 }
+
+const std::vector<Pessoa*> &ArvoreGenealogica::getPessoas() const
+{
+    return m_Pessoas;
+}

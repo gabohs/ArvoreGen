@@ -5,8 +5,6 @@ JControles::JControles(ArvoreGenealogica& arvore)
 {
 }
 
-
-
 void JControles::Renderiza()
 {
     ImGui::Begin(m_Nome.c_str(), nullptr, ImGuiWindowFlags_NoTitleBar);
@@ -16,7 +14,7 @@ void JControles::Renderiza()
 
     static char nome[256]{};
     static int anoNasc = 2000;
-    static char genero[32]{ "Masculino" };
+    static const char* genero;
 
     static bool m, f;
 
@@ -27,8 +25,14 @@ void JControles::Renderiza()
     ImGui::InputInt("##AnoNasc", &anoNasc);
 
     ImGui::Text("Gênero:");
-    ImGui::InputText("##Genero", genero, sizeof(genero));
+    // ImGui::InputText("##Genero", genero, sizeof(genero));
 
+    const char* generos[] = {"Masc.", "Fem.", "Outro"};
+
+    static int genSelecionado = 0;
+    ImGui::Combo("##selecoes_genero", &genSelecionado, generos, IM_ARRAYSIZE(generos));
+    genero = generos[genSelecionado];
+    
     ImGui::Dummy(ImVec2(0, 5));
 
     if (ImGui::Button("Adicionar Pessoa"))

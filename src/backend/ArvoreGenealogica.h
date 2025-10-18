@@ -12,6 +12,8 @@ public:
     void addPessoa(Pessoa* pessoa);
     void printPessoas();
 
+    const std::vector<Pessoa*>& getPessoas() const;
+
 private:
     std::vector<Pessoa*> m_Pessoas;
 };

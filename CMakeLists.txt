@@ -48,13 +48,18 @@ add_executable(ArvoreGen
     src/core/Run.cpp
     src/core/main.cpp
 
-    src/gui/theme/StyleManager.cpp
-    src/gui/GuiLayer.cpp
-    src/gui/janelas/JanelaControles.cpp
-    src/gui/janelas/JanelaVisualiza.cpp
-    
     src/backend/Pessoa.cpp
     src/backend/ArvoreGenealogica.cpp
+
+    src/gui/theme/StyleManager.cpp
+    src/gui/GuiLayer.cpp
+
+    src/gui/janelas/JanelaControles.cpp
+    src/gui/janelas/JanelaVisualiza.cpp
+
+    src/gui/arvore/ArvoreRender.cpp
+    
+    
 )
 
 # Link the executable with ImGui and dependencies

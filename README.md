@@ -2,7 +2,7 @@
 
 - Projeto feito por Emanuel e Gabriel para a disciplina de Linguagem de Programação (2º semestre) do curso de ADS no IFRS
 
-![App arvore gen](imagens/app.png)
+![App arvore gen](imagens/appV2.png)
 
 <small>Foto do estado atual do projeto (16/10/2025)</small>
 
@@ -84,7 +84,7 @@ A estrutura do projeto será detalhada no arquivo [Estrutura.md](Estrutura.md)
 
 - [Outro vídeo que inspirou a arquitetura do projeto](https://www.youtube.com/watch?v=U1BnzWX194Q)
 
--[Outro vídeo usado como referencia na arquitetura das classes App, GuiLayers e dos demais paineis](https://www.youtube.com/watch?v=OYQp0GuoByM)
+- [Outro vídeo usado como referencia na arquitetura das classes App, GuiLayers e dos demais paineis](https://www.youtube.com/watch?v=OYQp0GuoByM)
 
 - [Tutorial da biblioteca ImGui](https://www.youtube.com/watch?v=790aMkbsBm8)
 

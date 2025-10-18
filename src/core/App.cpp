@@ -5,7 +5,8 @@
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
 
-#include "../gui/theme/StyleManager.h"
+
+#include "../gui/theme/font.h"
 
 #include "../gui/janelas/JanelaControles.h"
 #include "../gui/janelas/JanelaVisualiza.h"
@@ -24,7 +25,7 @@ App::App(const DadosApp& dApp)
 
     m_GuiLayer = std::make_unique<GuiLayer>();
     m_GuiLayer->AddJanela( std::make_shared<JControles>(m_Arvore) );
-    m_GuiLayer->AddJanela( std::make_shared<JVisualizacao>() );
+    m_GuiLayer->AddJanela( std::make_shared<JVisualizacao>(m_Arvore) );
 
     std::cout << dApp.nome << " iniciado com sucesso!\n";
 }
@@ -42,7 +43,10 @@ bool App::initImgui()
 
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 
-    Styles::Style2();
+    ImFontConfig font_cfg;
+    font_cfg.FontDataOwnedByAtlas = false;
+
+    io.Fonts->AddFontFromMemoryTTF(JetBrainsMonoNL, FontSize, tamFonte, &font_cfg);
     
     if (!ImGui_ImplGlfw_InitForOpenGL(m_Janela->GetHandle(), true))
     {
