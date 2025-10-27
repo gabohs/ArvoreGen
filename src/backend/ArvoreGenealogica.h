@@ -7,7 +7,7 @@
 class ArvoreGenealogica
 {
 public:
-    Pessoa* buscaPessoa(std::string& nome);
+    Pessoa* buscaPessoa(const std::string& nome) const;
 
     void addPessoa(Pessoa* pessoa);
     void printPessoas();

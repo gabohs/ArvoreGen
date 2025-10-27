@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../GuiLayer.h"
 #include "../../backend/ArvoreGenealogica.h"
 #include "../../backend/Pessoa.h"
@@ -18,6 +20,7 @@ public:
     { 
         return m_JanelaAberta; 
     }
+
     void SetOpen(bool open) override
     { 
         m_JanelaAberta = open; 
@@ -26,10 +29,26 @@ public:
     void Renderiza() override;
 
 private:
+    void desenhaTitulo(const char* texto);
+
+    void secaoAdicionaPessoa();
+    void secaoDefineRelacao();
+
+    void secaoBusca();
+    void abrePainelInfoPessoa(const Pessoa* pessoa);
+
+    void popupsErro();
+    void secaoDebug();
+
+    void AddPessoaGui(Pessoa* pessoa);
+
+private:
     std::string m_Nome = "Controles";
     bool m_JanelaAberta = true;
 
+    bool m_PainelInfoPessoaAberto = false; // provavelmente n eh a solucao mais elegante pra controlar a janela de infoBusca, mas funciona
+
     ArvoreGenealogica& m_Arvore;
 
-    void AddPessoaGui(Pessoa* pessoa);
+    
 };

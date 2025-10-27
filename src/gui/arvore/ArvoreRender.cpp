@@ -11,7 +11,10 @@ ArvoreRender::ArvoreRender(ArvoreGenealogica &arvore)
 }
 
 void ArvoreRender::desenhaArvore()
-{
+{   
+    if (m_Arvore.getPessoas().empty()) // so desenha arvore se tiver pessoas de fato
+        return;
+
     ImDrawList* drawList = ImGui::GetWindowDrawList();
 
     ImVec2 cursorScreenPos = ImGui::GetCursorScreenPos(); // posicao do cursor relativa à tela
@@ -23,6 +26,12 @@ void ArvoreRender::desenhaArvore()
     );
 
     const uint8_t qpc = 8; // quadrados por coluna
+
+    // drawList->AddLine(
+    //     ImVec2(pos.x + 20, pos.y + 20), ImVec2(pos.x + 20, pos.y + 100),
+    //     ImGui::ColorConvertFloat4ToU32(Colors::Green),
+    //     5.0f
+    // );
 
     int i = 0;
     for (Pessoa* pessoa : m_Arvore.getPessoas())
@@ -39,10 +48,15 @@ void ArvoreRender::desenhaArvore()
             verticeInicial.y + node.altura
         );
 
+        if (pessoa->getInfo().genero == "Fem.")
+            node.cor = ImGui::ColorConvertFloat4ToU32(Colors::Purple);
+        else if (pessoa->getInfo().genero == "Outro")
+            node.cor = ImGui::ColorConvertFloat4ToU32(Colors::Gray);
+
         drawList->AddRectFilled(
             verticeInicial,
             verticeFinal,
-            ImGui::ColorConvertFloat4ToU32(Colors::Aqua),
+            node.cor,
             node.arredondamento
         );
 
@@ -70,7 +84,7 @@ void ArvoreRender::desenhaArvore()
         std::string genero = "G: " + pessoa->getInfo().genero;
         drawList->AddText(
             ImVec2( verticeInicial.x + ((node.largura - ImGui::CalcTextSize(genero.c_str()).x) / 2), verticeInicial.y + 40 ),
-            ImGui::ColorConvertFloat4ToU32(Colors::DarkYellow),
+            ImGui::ColorConvertFloat4ToU32(Colors::BrightRed),
             genero.c_str()
         );
 

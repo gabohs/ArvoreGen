@@ -18,6 +18,11 @@ public:
     void setPai(Pessoa* p);
     void setMae(Pessoa* m);
 
+    const Pessoa* getMae() const;
+    const Pessoa* getPai() const;
+
+    const std::vector<Pessoa*> getFilhos() const;
+
     void addFilho(Pessoa* filho);
 
     const InfoPessoa& getInfo() const;

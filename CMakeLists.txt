@@ -52,10 +52,13 @@ add_executable(ArvoreGen
     src/backend/ArvoreGenealogica.cpp
 
     src/gui/theme/StyleManager.cpp
+    src/gui/theme/colors.cpp
     src/gui/GuiLayer.cpp
 
     src/gui/janelas/JanelaControles.cpp
     src/gui/janelas/JanelaVisualiza.cpp
+
+    src/gui/arvore/Node.cpp
 
     src/gui/arvore/ArvoreRender.cpp
     

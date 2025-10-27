@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-Pessoa* ArvoreGenealogica::buscaPessoa(std::string& nome)
+Pessoa* ArvoreGenealogica::buscaPessoa(const std::string& nome) const
 {   
     for (Pessoa* pessoa : m_Pessoas)
     {
