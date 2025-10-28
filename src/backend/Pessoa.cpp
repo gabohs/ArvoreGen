@@ -14,12 +14,12 @@ void Pessoa::setMae(Pessoa *m)
     m_Mae = m;
 }
 
-const Pessoa* Pessoa::getMae() const
+Pessoa* Pessoa::getMae() const
 {
     return m_Mae;
 }
 
-const Pessoa* Pessoa::getPai() const
+Pessoa* Pessoa::getPai() const
 {
     return m_Pai;
 }

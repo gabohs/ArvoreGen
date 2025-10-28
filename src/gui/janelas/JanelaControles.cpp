@@ -110,6 +110,8 @@ void JControles::secaoDefineRelacao()
         else 
         {   
             pSelecionada->setMae(mae);
+            mae->addFilho(pSelecionada);
+
             ImGui::OpenPopup("RelacaoSucesso");
         }
     }
@@ -131,6 +133,7 @@ void JControles::secaoDefineRelacao()
         else
         {   
             pSelecionada->setPai(pai);
+            pai->addFilho(pSelecionada);
             ImGui::OpenPopup("RelacaoSucesso");
         }
     }
