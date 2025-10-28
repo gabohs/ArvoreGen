@@ -214,8 +214,7 @@ void JControles::abrePainelInfoPessoa(const Pessoa* pessoa)
             ImGui::BeginChild("Filhos", ImVec2(0, 100), true);
             for (const Pessoa* p : pessoa->getFilhos())
             {   
-                std::string nomeFilho = p->getInfo().nome + ",";
-                ImGui::Text(nomeFilho.c_str());
+                ImGui::Text(p->getInfo().nome.c_str());
             }
             ImGui::EndChild();
         }

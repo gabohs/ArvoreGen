@@ -29,8 +29,14 @@ const std::vector<Pessoa*> Pessoa::getFilhos() const
     return m_Filhos;
 }
 
-void Pessoa::addFilho(Pessoa *filho)
+void Pessoa::addFilho(Pessoa* filho)
 {   
+    for (Pessoa* f : m_Filhos)
+    {
+        if (f == filho)
+            return;
+    }
+
     m_Filhos.push_back(filho);
 }
 
