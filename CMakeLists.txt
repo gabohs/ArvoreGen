@@ -61,6 +61,8 @@ add_executable(ArvoreGen
     src/gui/arvore/Node.cpp
 
     src/gui/arvore/ArvoreRender.cpp
+
+    src/gui/utils/mouse.cpp
     
     
 )

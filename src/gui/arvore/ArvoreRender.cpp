@@ -1,7 +1,9 @@
 #include "ArvoreRender.h"
 
-#include "Node.h"
+
 #include "../theme/colors.h"
+
+#include "../utils/mouse.h"
 
 #include <iostream>
 
@@ -94,7 +96,8 @@ void ArvoreRender::desenhaArvore()
             ImGui::ColorConvertFloat4ToU32(Colors::Yellow),
             nascimento.c_str()
         );
-        
+
+        infoNode(verticeInicial, verticeFinal, pessoa->getInfo().nome); // pega o nome completo, nao o nome com os ...
         i++;
     }
 
@@ -103,5 +106,15 @@ void ArvoreRender::desenhaArvore()
         NodeArvore node(nullptr); // so para acessar as propriedades de dimensao do node
         float alturaTotalCanvas = ((m_Arvore.getPessoas().size() / qpc) + 1) * (node.altura + node.marginY);
         ImGui::Dummy(ImVec2(qpc * (node.largura + node.marginX), alturaTotalCanvas));
-    }    
+    }  
+}
+
+void ArvoreRender::infoNode(const ImVec2& VIRect, const ImVec2& VFRect, const std::string& nome) const
+{
+    if (utils::mouseDentroDeRect(VIRect, VFRect))
+    {
+        ImGui::BeginTooltip();
+        ImGui::TextUnformatted(nome.c_str());
+        ImGui::EndTooltip();
+    }
 }
