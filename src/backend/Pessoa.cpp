@@ -24,7 +24,7 @@ Pessoa* Pessoa::getPai() const
     return m_Pai;
 }
 
-const std::vector<Pessoa*> Pessoa::getFilhos() const
+const std::vector<Pessoa*>& Pessoa::getFilhos() const
 {
     return m_Filhos;
 }

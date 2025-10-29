@@ -3,17 +3,39 @@
 #include "../../backend/Pessoa.h"
 #include "imgui.h"
 
-struct NodeArvore
-{   
-    Pessoa* m_Pessoa;
-    NodeArvore(Pessoa* pessoa);
-
+struct NodeAttr // atributos do node
+{
     const float largura = 100.f;
     const float altura = 100.f;    
-    const float marginX = 75.f;
+    const float marginX = 200.f;
     const float marginY = 150.f;
 
     const float arredondamento = 10.f;
+};
+
+class NodeArvore
+{   
+public:
+    NodeArvore(Pessoa* pessoa);
+
+    void desenha(ImDrawList* drawList, ImVec2 verticeInicial, ImVec2 verticeFinal); 
+    // - [gabriel]: resolvi passar o drawList como parametro para não ficar redeclarando a cada frame, 
+    // -> mudar se tiver um jeito menos estranho
+
+    const Pessoa* getPessoa() const
+    {
+        return m_Pessoa;
+    }
+
+    const NodeAttr getAttr() const
+    {
+        return m_Attr;
+    }
+
+private:
+    Pessoa* m_Pessoa;
+    
+    NodeAttr m_Attr;
 
     ImU32 cor;
 };

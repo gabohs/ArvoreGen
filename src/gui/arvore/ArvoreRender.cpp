@@ -12,101 +12,54 @@ ArvoreRender::ArvoreRender(ArvoreGenealogica &arvore)
 {
 }
 
-void ArvoreRender::desenhaArvore()
-{   
-    if (m_Arvore.getPessoas().empty()) // so desenha arvore se tiver pessoas de fato
+void ArvoreRender::desenhaArvoreAPartirDeAncestral(const std::string& nomeAncestral)
+{
+    Pessoa* ancestral = m_Arvore.buscaPessoa(nomeAncestral); 
+    if (!ancestral)
         return;
 
     ImDrawList* drawList = ImGui::GetWindowDrawList();
+    ImVec2 origem = ImGui::GetCursorScreenPos();
 
-    ImVec2 cursorScreenPos = ImGui::GetCursorScreenPos(); // posicao do cursor relativa à tela
-    ImVec2 cursorPos = ImGui::GetCursorPos(); // posicao do cursor relativa à janela atual
-    
-    ImVec2 pos (
-        cursorScreenPos.x + cursorPos.x, 
-        cursorScreenPos.y + cursorPos.y
-    );
+    float startX = origem.x + ImGui::GetWindowSize().x / 2; 
+    float startY = origem.y + 50.f;   
 
-    const uint8_t qpc = 8; // quadrados por coluna
+    desenhaNodeRecursivo(drawList, ancestral, startX, startY, 0);
+}
 
-    // drawList->AddLine(
-    //     ImVec2(pos.x + 20, pos.y + 20), ImVec2(pos.x + 20, pos.y + 100),
-    //     ImGui::ColorConvertFloat4ToU32(Colors::Green),
-    //     5.0f
-    // );
+void ArvoreRender::desenhaNodeRecursivo(ImDrawList* drawList, Pessoa* pessoa, float x, float y, int depth)
+{
+    NodeArvore node(pessoa);
+    const NodeAttr& attr = node.getAttr();
 
-    int i = 0;
-    for (Pessoa* pessoa : m_Arvore.getPessoas())
-    {   
-        NodeArvore node(pessoa);
+    ImVec2 vi(x - attr.largura / 2, y);
+    ImVec2 vf(x + attr.largura / 2, y + attr.altura);
+    node.desenha(drawList, vi, vf);
+    infoNode(vi, vf, pessoa->getInfo().nome);
 
-        ImVec2 verticeInicial(
-            pos.x + (i % qpc) * (node.largura + node.marginX),
-            pos.y + (i / qpc) * (node.altura + node.marginY) 
-        );
+    const auto& filhos = pessoa->getFilhos();
+    if (filhos.empty())
+        return;
 
-        ImVec2 verticeFinal(
-            verticeInicial.x + node.largura,
-            verticeInicial.y + node.altura
-        );
+    float totalWidth = (filhos.size() - 1) * attr.marginX;
 
-        if (pessoa->getInfo().genero == "Fem.")
-            node.cor = ImGui::ColorConvertFloat4ToU32(Colors::Purple);
-        else if (pessoa->getInfo().genero == "Outro")
-            node.cor = ImGui::ColorConvertFloat4ToU32(Colors::Gray);
+    float startX = x - totalWidth / 2;
+    float nextY = y + attr.altura + attr.marginY;
 
-        drawList->AddRectFilled(
-            verticeInicial,
-            verticeFinal,
-            node.cor,
-            node.arredondamento
-        );
-
-        std::string nome = pessoa->getInfo().nome;
-        float tamanhoNomeX = ImGui::CalcTextSize(nome.c_str()).x;
-
-        // evita que a string do nome seja maior que o node
-        const int larguraMax = node.largura - 10;
-        
-        if (tamanhoNomeX > larguraMax)
-        {
-            while (!nome.empty() && ImGui::CalcTextSize((nome + "...").c_str()).x > larguraMax)
-            {
-                nome.pop_back();
-            }
-            nome += "...";
-        }
-        
-        drawList->AddText(
-            ImVec2( verticeInicial.x + ( (node.largura - ImGui::CalcTextSize(nome.c_str()).x) / 2), verticeInicial.y + 15 ), 
-            ImGui::ColorConvertFloat4ToU32(Colors::DarkGray),
-            nome.c_str()
-        );
-
-        std::string genero = "G: " + pessoa->getInfo().genero;
-        drawList->AddText(
-            ImVec2( verticeInicial.x + ((node.largura - ImGui::CalcTextSize(genero.c_str()).x) / 2), verticeInicial.y + 40 ),
-            ImGui::ColorConvertFloat4ToU32(Colors::BrightRed),
-            genero.c_str()
-        );
-
-        std::string nascimento = "Nasc: " + std::to_string(pessoa->getInfo().anoNascimento);
-        drawList->AddText(
-            ImVec2( verticeInicial.x + ((node.largura - ImGui::CalcTextSize(nascimento.c_str()).x) / 2), verticeFinal.y - 30 ),
-            ImGui::ColorConvertFloat4ToU32(Colors::Yellow),
-            nascimento.c_str()
-        );
-
-        infoNode(verticeInicial, verticeFinal, pessoa->getInfo().nome); // pega o nome completo, nao o nome com os ...
-        i++;
-    }
-
-    if (!m_Arvore.getPessoas().empty())
+    for (size_t i = 0; i < filhos.size(); ++i)
     {
-        NodeArvore node(nullptr); // so para acessar as propriedades de dimensao do node
-        float alturaTotalCanvas = ((m_Arvore.getPessoas().size() / qpc) + 1) * (node.altura + node.marginY);
-        ImGui::Dummy(ImVec2(qpc * (node.largura + node.marginX), alturaTotalCanvas));
-    }  
+        float childX = startX + i * attr.marginX;
+        float childY = nextY;
+
+        drawList->AddLine(
+            ImVec2(x, y + attr.altura),
+            ImVec2(childX, childY),
+            ImGui::ColorConvertFloat4ToU32(Colors::Gray),
+            2.0f
+        );
+
+        desenhaNodeRecursivo(drawList, filhos[i], childX, childY, depth + 1);
+    }
 }
 
 void ArvoreRender::infoNode(const ImVec2& VIRect, const ImVec2& VFRect, const std::string& nome) const

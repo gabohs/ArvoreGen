@@ -21,7 +21,7 @@ public:
     Pessoa* getMae() const;
     Pessoa* getPai() const;
 
-    const std::vector<Pessoa*> getFilhos() const;
+    const std::vector<Pessoa*>& getFilhos() const;
 
     void addFilho(Pessoa* filho);
 
