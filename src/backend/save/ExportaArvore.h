@@ -14,7 +14,6 @@ public:
 
     bool salvaArvore();
     bool carregaArvore();
-
 private:
     std::ifstream m_input;
     std::ofstream m_output;
