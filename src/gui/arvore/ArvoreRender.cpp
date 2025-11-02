@@ -15,6 +15,7 @@ ArvoreRender::ArvoreRender(ArvoreGenealogica &arvore)
 void ArvoreRender::desenhaArvoreAPartirDeAncestral(const std::string& nomeAncestral)
 {
     Pessoa* ancestral = m_Arvore.buscaPessoa(nomeAncestral); 
+    
     if (!ancestral)
         return;
 
@@ -24,10 +25,10 @@ void ArvoreRender::desenhaArvoreAPartirDeAncestral(const std::string& nomeAncest
     float startX = origem.x + ImGui::GetWindowSize().x / 2; 
     float startY = origem.y + 50.f;   
 
-    desenhaNodeRecursivo(drawList, ancestral, startX, startY, 0);
+    desenhaDescendentes(drawList, ancestral, startX, startY, 0);
 }
 
-void ArvoreRender::desenhaNodeRecursivo(ImDrawList* drawList, Pessoa* pessoa, float x, float y, int depth)
+void ArvoreRender::desenhaDescendentes(ImDrawList* drawList, Pessoa* pessoa, float x, float y, int depth)
 {
     NodeArvore node(pessoa);
     const NodeAttr& attr = node.getAttr();
@@ -58,8 +59,12 @@ void ArvoreRender::desenhaNodeRecursivo(ImDrawList* drawList, Pessoa* pessoa, fl
             2.0f
         );
 
-        desenhaNodeRecursivo(drawList, filhos[i], childX, childY, depth + 1);
+        desenhaDescendentes(drawList, filhos[i], childX, childY, depth + 1);
     }
+}
+
+void ArvoreRender::desenhaAscendentes(ImDrawList *drawList, Pessoa *pessoa, float x, float y, int depth)
+{
 }
 
 void ArvoreRender::infoNode(const ImVec2& VIRect, const ImVec2& VFRect, const std::string& nome) const

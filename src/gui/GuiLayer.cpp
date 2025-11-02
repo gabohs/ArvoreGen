@@ -31,7 +31,7 @@ void GuiLayer::Render()
 
 void GuiLayer::RenderizaJanelas()
 {   
-    for (auto& janela : m_Janelas)
+    for (const auto& janela : m_Janelas)
     {   
         if (janela->IsOpen())
             janela->Renderiza();
