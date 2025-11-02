@@ -2,7 +2,7 @@
 
 #include "../theme/colors.h"
 
-#include "../backend/save/ExportaArvore.h"
+#include "../../backend/save/ExportaArvore.h"
 
 #include <string>
 
@@ -171,11 +171,20 @@ void JControles::secaoBusca()
 
 void JControles::secaoExporta()
 {
-    ImGui::SeparatorText("Persistência da Árvore");
+    ImGui::SeparatorText("Salvar/Carregar Árvore");
+
+    static char nomeArquivo[256] = "arvore";
+
+    ImGui::TextColored(Colors::DarkBlue, "Caminho do arquivo:");
+    ImGui::InputText("##NomeArquivo", nomeArquivo, sizeof(nomeArquivo));
+    ImGui::SameLine();
+    ImGui::Text(".csv");
 
     if (ImGui::Button("Salvar Árvore", ImVec2(150, 0)))
-    {
-        ExportaArvore exportador("arvore.csv", &m_Arvore);
+    {   
+        std::string arquivo = std::string(nomeArquivo) + ".csv";
+        ExportaArvore exportador(arquivo, &m_Arvore);
+
         if (exportador.salvaArvore())
             ImGui::OpenPopup("ArquivoSalvo");
         else
@@ -185,8 +194,10 @@ void JControles::secaoExporta()
     ImGui::SameLine();
 
     if (ImGui::Button("Carregar Árvore", ImVec2(150, 0)))
-    {
-        ExportaArvore exportador("arvore.csv", &m_Arvore);
+    {   
+        std::string arquivo = std::string(nomeArquivo) + ".csv";
+        ExportaArvore exportador(arquivo, &m_Arvore);
+
         if (exportador.carregaArvore())
             ImGui::OpenPopup("ArquivoCarregado");
         else

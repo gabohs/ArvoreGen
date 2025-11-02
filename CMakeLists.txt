@@ -44,6 +44,8 @@ add_executable(ArvoreGen
     src/backend/Pessoa.cpp
     src/backend/ArvoreGenealogica.cpp
 
+    src/backend/save/ExportaArvore.cpp
+
     src/gui/theme/StyleManager.cpp
     src/gui/theme/colors.cpp
     src/gui/GuiLayer.cpp
