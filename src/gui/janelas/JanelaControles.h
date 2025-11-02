@@ -42,6 +42,8 @@ private:
 
     void AddPessoaGui(Pessoa* pessoa);
 
+    void secaoExporta();
+
 private:
     std::string m_Nome = "Controles";
     bool m_JanelaAberta = true;

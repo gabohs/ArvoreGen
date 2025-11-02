@@ -2,6 +2,8 @@
 
 #include "../theme/colors.h"
 
+#include "../backend/save/ExportaArvore.h"
+
 #include <string>
 
 JControles::JControles(ArvoreGenealogica& arvore)
@@ -22,6 +24,8 @@ void JControles::Renderiza()
         secaoBusca();
         ImGui::Dummy(ImVec2(0, 10));
 
+        secaoExporta();
+        ImGui::Dummy(ImVec2(0, 10));
 
         popupsErro();
         secaoDebug();
@@ -165,6 +169,33 @@ void JControles::secaoBusca()
         abrePainelInfoPessoa(pSelecionada);    
 }
 
+void JControles::secaoExporta()
+{
+    ImGui::SeparatorText("Persistência da Árvore");
+
+    if (ImGui::Button("Salvar Árvore", ImVec2(150, 0)))
+    {
+        ExportaArvore exportador("arvore.csv", &m_Arvore);
+        if (exportador.salvaArvore())
+            ImGui::OpenPopup("ArquivoSalvo");
+        else
+            ImGui::OpenPopup("ErroSalvar");
+    }
+
+    ImGui::SameLine();
+
+    if (ImGui::Button("Carregar Árvore", ImVec2(150, 0)))
+    {
+        ExportaArvore exportador("arvore.csv", &m_Arvore);
+        if (exportador.carregaArvore())
+            ImGui::OpenPopup("ArquivoCarregado");
+        else
+            ImGui::OpenPopup("ErroCarregar");
+    }
+
+    ImGui::Dummy(ImVec2(0, 10));
+}
+
 void JControles::abrePainelInfoPessoa(const Pessoa* pessoa)
 {   
     // gambiarra do krai pra abrir janelinha de busca
@@ -250,6 +281,30 @@ void JControles::popupsErro()
     {
         ImGui::TextColored(Colors::Green, "Relação definida com sucesso!");
 
+        ImGui::EndPopup();
+    }
+
+    if (ImGui::BeginPopup("ArquivoSalvo"))
+    {
+        ImGui::TextColored(Colors::Green, "Árvore salva com sucesso!");
+        ImGui::EndPopup();
+    }
+
+    if (ImGui::BeginPopup("ArquivoCarregado"))
+    {
+        ImGui::TextColored(Colors::Green, "Árvore carregada com sucesso!");
+        ImGui::EndPopup();
+    }
+
+    if (ImGui::BeginPopup("ErroSalvar"))
+    {
+        ImGui::TextColored(Colors::Red, "Erro ao salvar a árvore!");
+        ImGui::EndPopup();
+    }
+
+    if (ImGui::BeginPopup("ErroCarregar"))
+    {
+        ImGui::TextColored(Colors::Red, "Erro ao carregar a árvore!");
         ImGui::EndPopup();
     }
 }
