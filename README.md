@@ -2,7 +2,7 @@
 
 - Projeto feito por Emanuel e Gabriel para a disciplina de Linguagem de Programação (2º semestre) do curso de ADS no IFRS
 
-![App arvore gen](imagens/appV4.png)
+![App arvore gen](docs/img/appV4.png)
 
 <small>Foto do estado atual do projeto (29/10/2025)</small>
 
