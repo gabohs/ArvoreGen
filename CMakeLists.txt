@@ -59,6 +59,7 @@ add_executable(ArvoreGen
 
     src/gui/utils/mouse.cpp
     src/gui/utils/truncaNome.cpp
+    src/gui/utils/centralizaScroll.cpp
 )
 
 # =--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=
