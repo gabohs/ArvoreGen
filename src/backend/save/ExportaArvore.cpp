@@ -3,13 +3,14 @@
 #include <iostream>
 
 ExportaArvore::ExportaArvore(const std::string& caminho, ArvoreGenealogica* arvore)
-    : m_input(caminho), m_output(caminho), m_arvore(arvore)
+    : m_caminho(caminho), m_arvore(arvore)
 {
-    
+
 }
 
 bool ExportaArvore::salvaArvore()
 {
+    m_output.open(m_caminho, std::ios::out | std::ios::trunc);
     if(!m_output.is_open() || !m_arvore) return false;
 
     for (Pessoa* p : m_arvore->getPessoas())
@@ -26,10 +27,14 @@ bool ExportaArvore::salvaArvore()
             
         m_output << info.nome << ","
                 << info.anoNascimento << ","
-                << info.genero << ","
-                << pai << ","
-                << mae;
+                << info.genero;
 
+        if(!pai.empty())
+            m_output << "," << pai;
+
+        if(!mae.empty())
+            m_output << "," << mae;
+        
         for (Pessoa* filho : p->getFilhos())
         {
             m_output << "," << filho->getInfo().nome;
@@ -40,11 +45,13 @@ bool ExportaArvore::salvaArvore()
 
     std::cout << "Arvore salva com sucesso! \n";
 
+    m_output.close();
     return true;
 }
 
 bool ExportaArvore::carregaArvore()
-{
+{   
+    m_input.open(m_caminho, std::ios::in);
     if (!m_input.is_open() || !m_arvore) return false;
 
     std::string linha;
@@ -93,7 +100,8 @@ bool ExportaArvore::carregaArvore()
     }
 
     std::cout << "Arvore carregada! \n";
-    
+
+    m_input.close();
     return true;
 }
 
@@ -104,9 +112,7 @@ std::vector<std::string> ExportaArvore::divideLinha(const std::string& linha)
     std::string item;
 
     while (std::getline(ss, item, ','))
-    {
         partes.push_back(item);
-    }
-    
+        
     return partes;
 }
