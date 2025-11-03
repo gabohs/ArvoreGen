@@ -19,8 +19,8 @@ public:
     NodeArvore(Pessoa* pessoa);
 
     void desenha(ImDrawList* drawList, ImVec2 verticeInicial, ImVec2 verticeFinal); 
-    // - [gabriel]: resolvi passar o drawList como parametro para não ficar redeclarando a cada frame, 
-    // -> mudar se tiver um jeito menos estranho
+    // - [gabriel]: resolvi passar o drawList como parametro, mas poderia ter sido inicializado na classe
+    // [update] inclusive acho que isso seja até melhor, mas agora n da tempo de mudar
 
     const Pessoa* getPessoa() const
     {

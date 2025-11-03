@@ -14,7 +14,7 @@
 
 App::App(const DadosApp& dApp)
 {
-    m_Janela = std::make_shared<Window>(dApp.dJanela);
+    m_Janela = std::make_unique<Window>(dApp.dJanela);
     m_Janela->Create();
 
     if (!initImgui())
