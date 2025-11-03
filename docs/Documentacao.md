@@ -4,7 +4,8 @@
 
 - O processo de desenvolvimento foi iniciado no dia 15 de outubro de 2025.
    
-- Para facilitar a colaboração, a criaçao de diferentes branches foi necessária.
+- Para facilitar a colaboração, a criaçao de diferentes branches foi feita.
+- Para alguns problemas encontrados foram feitas Issues, se o professor desejar olhar na aba Issues do repo.
 
 ## 2. As branches
 
