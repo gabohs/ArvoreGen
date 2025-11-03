@@ -52,7 +52,7 @@ Então, faça o download do projeto, [clicando aqui!](https://github.com/gabohs/
 
 se o link não funcionar, clique no botão azul `Code` e depois em `Download ZIP`. Certifique-se de que está na branch `build`
 
-![DownloadBotao](imagens/botaoDownload.png)
+![DownloadBotao](docs/img/botaoDownload.png)
 
 ---
 

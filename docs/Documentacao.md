@@ -98,13 +98,13 @@
 
 ## 5. Detalhamento da Estrutura do Projeto
 
-- Adendo: Não detalharei os getters e setters das classes (autoexplicativos), nem seu constructor e destructor, que são usados como normalmente (para inicialização e cleanup respectivamente).
+- Adendo: Não detalharei os getters e setters das classes (autoexplicativos), nem seu constructor e destructor, que são usados como normalmente sempre são (para inicialização e cleanup respectivamente).
 
 ### 5.1 a função main
 
 > Localização: src/core/main.cpp
 
-- Começaremos nossa análise do main.cpp
+- Começaremos nossa análise no main.cpp
 
 - A main instancia a classe `App` e chama seu método `Run`, que contêm o loop principal. 
 
@@ -114,6 +114,7 @@
 - As informações do app são armazenadas na struct InfoApp
 
 > Definição: src/core/App.h
+> 
 > Implementação: src/core/App.cpp
 
 #### Métodos públicos:
@@ -151,12 +152,17 @@ bool m_Rodando = false: controla se o app esta rodando ou não. Após início do
 
 - É herdada por ambas as janelas (paineis) (JControles e JVisualizacao)
 
+> Definição: src/gui/GuiLayer.h
+> 
+> Implementação: src/gui/GuiLayer.cpp
+
 ### 5.4 A classe GuiLayer
 
 - É dona de todas as janelas, armazenada em um vector. 
 - Possui tanto boilerplate do ImGui, quanto código para renderizar as janelas
 
 > Definição: src/gui/GuiLayer.h
+> 
 > Implementação: src/gui/GuiLayer.cpp
 
 #### Métodos públicos
@@ -198,6 +204,7 @@ bool m_Rodando = false: controla se o app esta rodando ou não. Após início do
 - Essa classe é a representação de uma pessoa da árvore genealógica.
 
 > Definição: src/backend/Pessoa.h
+> 
 > Implementação: src/backend/Pessoa.cpp
 
 #### Métodos públicos
@@ -224,6 +231,7 @@ bool m_Rodando = false: controla se o app esta rodando ou não. Após início do
 - Utiliza um vector de Pessoa* para armazenar todas as pessoas da árvore
 
 > Definição: src/backend/ArvoreGenealogica.h
+> 
 > Implementação: src/backend/ArvoreGenealogica.cpp
 
 #### Métodos públicos
@@ -252,6 +260,7 @@ bool m_Rodando = false: controla se o app esta rodando ou não. Após início do
 - Armazena uma referência para ArvoreGenealogica, pois obviamente para desenhar é preciso ter as informações da árvore
 
 > Definição: src/gui/arvore/ArvoreRender.h
+> 
 > Implementação: src/gui/arvore/ArvoreRender.cpp
 
 #### Métodos públicos
@@ -291,6 +300,7 @@ bool m_Rodando = false: controla se o app esta rodando ou não. Após início do
 - Node recebe um ponteiro da pessoa que ele representa pelo constructor
 
 > Definição: src/gui/arvore/Node.h
+> 
 > Implementação: src/gui/arvore/ArvoreRender.cpp
 
 #### Métodos públicos
@@ -314,6 +324,7 @@ bool m_Rodando = false: controla se o app esta rodando ou não. Após início do
 - É a janela da esquerda, com os controles do aplicativo (adicionar pessoa, buscar pessoa, etc)
 
 > Definição: src/gui/janelas/JanelaControles.h
+> 
 > Implementação: src/gui/janelas/JanelaControles.cpp
 
 #### Métodos públicos
@@ -342,6 +353,7 @@ bool m_Rodando = false: controla se o app esta rodando ou não. Após início do
 - É a classe da janela que fica na direita, com a visualização da árvore
 
 > Definição: src/gui/janelas/JanelaVisualiza.h
+> 
 > Implementação: src/gui/janelas/JanelaVisualiza.cpp
 
 #### Métodos públicos
@@ -378,6 +390,7 @@ bool m_Rodando = false: controla se o app esta rodando ou não. Após início do
 - É a classe que cuida da exportação e importação da árvore.
 
 > Definição: src/backend/save/ExportaArvore.h
+> 
 > Implementação: src/backend/save/ExportaArvore.cpp
 
 ### 5.14 A classe Window
@@ -385,6 +398,7 @@ bool m_Rodando = false: controla se o app esta rodando ou não. Após início do
 - É um wrapper de uma glfwWindow, para ficar mais organizado
 
 > Definição: src/core/Window/Window.h
+> 
 > Implementação: src/core/Window/Window.cpp
 
 ## REFERÊNCIAS
