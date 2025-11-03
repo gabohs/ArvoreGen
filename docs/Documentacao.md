@@ -144,17 +144,15 @@
 - `std::unique_ptr<Window> m_Janela`: pointer para a janela (contexto opengl via glfw)
 - `std::unique_ptr<GuiLayer> m_GuiLayer`: pointer para a classe `GuiLayer` (src/gui/GuiLayer.h)
 
-const float tamFonte = 17.f: tamanho da fonte
+- `const float tamFonte = 17.f`: tamanho da fonte
 
-bool m_Rodando = false: controla se o app esta rodando ou não. Após início do programa, quando false, essa variável encerra o main loop.
+- `bool m_Rodando = false`: controla se o app esta rodando ou não. Após início do programa, quando false, essa variável encerra o main loop.
 
 ### 5.3 A interface IJanela
 
 - É herdada por ambas as janelas (paineis) (JControles e JVisualizacao)
 
 > Definição: src/gui/GuiLayer.h
-> 
-> Implementação: src/gui/GuiLayer.cpp
 
 ### 5.4 A classe GuiLayer
 
@@ -186,7 +184,7 @@ bool m_Rodando = false: controla se o app esta rodando ou não. Após início do
 #### `void AddJanela(std::shared_ptr<IJanela> janela)`
 
 - Adiciona janela do vector de janelas
-- Chamada no constructor classe App
+- Chamada no constructor da classe App
 
 #### Métodos privados
 
@@ -350,6 +348,7 @@ bool m_Rodando = false: controla se o app esta rodando ou não. Após início do
 
 ### 5.10 A classe JVisualiza
 
+- Também herda a interface IJanela
 - É a classe da janela que fica na direita, com a visualização da árvore
 
 > Definição: src/gui/janelas/JanelaVisualiza.h
