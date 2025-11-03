@@ -26,9 +26,10 @@ private:
     bool initImgui();
     void shutdown();
 
+private:
     ArvoreGenealogica m_Arvore;
 
-    std::shared_ptr<Window> m_Janela;
+    std::unique_ptr<Window> m_Janela;
     std::unique_ptr<GuiLayer> m_GuiLayer;
     
     const float tamFonte = 17.f;

@@ -37,5 +37,6 @@ public:
 private:
     void setupDockspace();
 
+private:
     std::vector<std::shared_ptr<IJanela>> m_Janelas;
 };

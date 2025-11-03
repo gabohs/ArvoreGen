@@ -2,9 +2,13 @@
 
 - Projeto feito por Emanuel e Gabriel para a disciplina de Linguagem de Programação (2º semestre) do curso de ADS no IFRS
 
-![App arvore gen](imagens/appV4.png)
+![App arvore gen](docs/img/appV4.png)
 
 <small>Foto do estado atual do projeto (29/10/2025)</small>
+
+## Documentação
+
+Docs detalhados no arquivo [Documentacao.md](docs/Documentacao.md)  
 
 ## Enunciado do Trabalho
 
@@ -33,20 +37,24 @@ Funcionalidades opcionais
 
 - Mostrar gerações separadas por nível.
 
-- Gravar e carregar a árvore de um arquivo texto (opcional, não obrigatório).
+- Gravar e carregar a árvore de um arquivo texto.
 ```
 
 ---
 
 ## Como Rodar o Projeto
 
-- **Visando facilitar o processo para o professor, foi feito o upload da pasta build com o executável já buildado aqui no repositório.**
+- **Visando facilitar o processo para o professor, na branch `build` foi feito o upload da pasta build com o executável já buildado.**
 
 Então, faça o download do projeto, [clicando aqui!](https://github.com/gabohs/ArvoreGen/archive/refs/heads/main.zip)
 
-se o link não funcionar, clique no botão azul `Code` e depois em `Download ZIP`
+---
 
-![DownloadBotao](imagens/botaoDownload.png)
+se o link não funcionar, clique no botão azul `Code` e depois em `Download ZIP`. Certifique-se de que está na branch `build`
+
+![DownloadBotao](docs/img/botaoDownload.png)
+
+---
 
 ou, clone com o git rodando no terminal o comando:
 
@@ -73,23 +81,3 @@ e rode **ArvoreGen.exe**
 
 1. Faça o download do projeto como mostrado acima.
 2. Rode os scripts .bat em ordem: (**s1**; depois o **s2**; e depois rode o **s3** desejado)
-
-## Estrutura do Projeto
-
-A estrutura do projeto será detalhada no arquivo [Estrutura.md](Estrutura.md)  
-
-## Recursos que foram usados no desenvolvimento
-
-- [Arquitetura básica do core (src/core) do projeto inspirados nesse vídeo](https://youtu.be/rUxZ5N77M5E?si=_ugWfWMr2I2oKDth)
-
-- [Outro vídeo que inspirou a arquitetura do projeto](https://www.youtube.com/watch?v=U1BnzWX194Q)
-
-- [Outro vídeo usado como referencia na arquitetura das classes App, GuiLayers e dos demais paineis](https://www.youtube.com/watch?v=OYQp0GuoByM)
-
-- [Tutorial da biblioteca ImGui](https://www.youtube.com/watch?v=790aMkbsBm8)
-
-- [Video Aulas C++](https://youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb&si=oqrA-v2s35nsTVAZ) - Conceitos como os abordados nos vídeos 26-29, 35 e 43 da playlist foram utilizados, mas não foram vistos ainda em aula
-
-### Créditos
-
-- Estilo (cores): https://github.com/ocornut/imgui/issues/707#issuecomment-2832090282
