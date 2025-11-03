@@ -14,10 +14,11 @@ public:
 
     bool salvaArvore();
     bool carregaArvore();
+
 private:
+    std::string m_caminho;
     std::ifstream m_input;
     std::ofstream m_output;
     ArvoreGenealogica* m_arvore;
-
     std::vector <std::string> divideLinha(const std::string& linha);
 };
