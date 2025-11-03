@@ -24,6 +24,8 @@ void JVisualizacao::Renderiza()
 
     static int tipoSelecionado = 0;
 
+    static bool renderizou1vez = false;
+
     ImGui::TextColored(Colors::DarkBlue, "Configurações: ");
     ImGui::Combo("Tipo Render", &tipoSelecionado, tiposRenderizacao, IM_ARRAYSIZE(tiposRenderizacao));
 
@@ -45,7 +47,11 @@ void JVisualizacao::Renderiza()
     {   
         ImGui::PushStyleColor(ImGuiCol_Button, Colors::BrightRed);
         if (ImGui::Button("Limpar"))
+        {
             desenhar = false;
+            renderizou1vez = false;
+        }
+            
         ImGui::PopStyleColor();
     }
     
@@ -62,7 +68,8 @@ void JVisualizacao::Renderiza()
 
             m_aRender.desenhaArvoreAPartirDeAncestral(nome, ImGui::GetCursorScreenPos());
 
-            utils::centralizaScrollEmX(); // roda apenas uma vez
+            if (!renderizou1vez) // roda apenas na primeira vez
+                utils::centralizaScrollEmX(); 
         }
             
         else if (tipoSelecionado == 1)
@@ -70,7 +77,8 @@ void JVisualizacao::Renderiza()
             ImGui::SetCursorPos(ImVec2(tamanhoCanvas.x / 2.f, tamanhoCanvas.y / 2.f)); // cursor no meio
             m_aRender.desenhaArvoreAscendentesEDescendentes(nome, ImGui::GetCursorScreenPos());
 
-            utils::centralizaScrollEmXY(); // tambem roda apenas uma vez
+            if (!renderizou1vez)
+                utils::centralizaScrollEmXY(); // tambem roda apenas uma vez
         }
     }
     
