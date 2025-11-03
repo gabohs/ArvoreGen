@@ -46,11 +46,11 @@ Funcionalidades opcionais
 
 - **Visando facilitar o processo para o professor, na branch `build` foi feito o upload da pasta build com o executável já buildado.**
 
-Então, faça o download do projeto, [clicando aqui!](https://github.com/gabohs/ArvoreGen/archive/refs/heads/main.zip)
+Então, faça o download do projeto, [clicando aqui!](https://github.com/gabohs/ArvoreGen/archive/refs/heads/build.zip)
 
 ---
 
-se o link não funcionar, clique no botão azul `Code` e depois em `Download ZIP`. Certifique-se de que está na branch `build`
+se o link não funcionar (é pra funcionar 100% de certeza), mas caso não funcione: clique no botão azul `Code` e depois em `Download ZIP`. Certifique-se de que está na branch `build`
 
 ![DownloadBotao](docs/img/botaoDownload.png)
 
