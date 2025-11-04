@@ -29,8 +29,6 @@ public:
     void Renderiza() override;
 
 private:
-    void desenhaTitulo(const char* texto);
-
     void secaoAdicionaPessoa();
     void secaoDefineRelacao();
 
