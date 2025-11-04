@@ -5,7 +5,7 @@
 - O processo de desenvolvimento foi iniciado no dia 15 de outubro de 2025.
    
 - Para facilitar a colaboração, a criaçao de diferentes branches foi feita.
-- Para alguns problemas encontrados foram feitas Issues, se o professor desejar olhar na aba Issues do repo.
+- Para alguns problemas encontrados foram feitas Issues, se o professor desejar, pode olhar na aba Issues do repo.
 
 ## 2. As branches
 
@@ -37,7 +37,7 @@
 
 ### 3.1 Pasta `src`
 
-- Contêm os arquivos .cpp e .h do projeto
+- Contém os arquivos .cpp e .h do projeto
 
 ### src/backend
 
@@ -73,7 +73,7 @@
 
 ### 3.2 Pasta `vendor`
 
-- Um *Vendor* é um adjetivo em inglês atribuido à uma pessoa ou empresa, indicando que esta vende serviços para clientes.
+- Um *Vendor* é um adjetivo em inglês atribuido a uma pessoa ou empresa, indicando que esta vende serviços para clientes.
 - A programação se apropria desse conceito e o utiliza para nomear uma pasta que contêm bibliotecas third-party. 
 
 
@@ -85,7 +85,7 @@
 
 - As janelas do ImGui são desenhadas em cima de uma janela gerada por um backend.
 - Existe uma branch do ImGui chamada docking, que permite fazer com que as janelas "grudem" na janela de fundo e sejam redimensionadas e reajeitadas na interface.
-- Uma coisa legal do ImGui é a possibilidade de escolher o backend. Você pode utilizar vulkan, opengl, sdl, sfml, directX... 
+- Uma coisa legal do ImGui é a possibilidade de escolher o backend. Você pode utilizar Vulkan, OpenGL, SDL, SFML, DirectX... 
 
 - Nesse projeto utilizamos OpenGL, com glfw.
 
@@ -99,7 +99,7 @@
 
 ## 5. Detalhamento da Estrutura do Projeto
 
-- Adendo: Não detalharei os getters e setters das classes (autoexplicativos), nem seu constructor e destructor, que são usados como normalmente sempre são (para inicialização e cleanup respectivamente).
+- Adendo: não detalharei os getters e setters das classes (autoexplicativos), nem seu constructor e destructor, que são usados como normalmente são (para inicialização e cleanup respectivamente).
 
 ### 5.1 a função main
 
@@ -122,7 +122,7 @@
 
 #### `void Run()`
 
-- Contêm o loop principal da aplicacao
+- Contém o loop principal da aplicacao
 
 #### `void Stop()`
 
@@ -157,7 +157,7 @@
 
 ### 5.4 A classe GuiLayer
 
-- É dona de todas as janelas, armazenada em um vector. 
+- É dona de todas as janelas, armazenadas em um vector. 
 - Possui tanto boilerplate do ImGui, quanto código para renderizar as janelas
 
 > Definição: src/gui/GuiLayer.h
@@ -184,7 +184,7 @@
 
 #### `void AddJanela(std::shared_ptr<IJanela> janela)`
 
-- Adiciona janela do vector de janelas
+- Adiciona janela no vector de janelas
 - Chamada no constructor da classe App
 
 #### Métodos privados
@@ -254,7 +254,7 @@
 
 ### 5.7 A classe ArvoreRender
 
-- Contêm as funções usadas na renderização da árvore.
+- Contém as funções usadas na renderização da árvore.
 - É instanciada posteriormente na Janela de Visualização (JVisualizacao), e seus métodos são chamados por lá.
 - Armazena uma referência para ArvoreGenealogica, pois obviamente para desenhar é preciso ter as informações da árvore
 
@@ -379,7 +379,7 @@
 
 ### 5.12 A pasta theme
 
-- `colors.cpp e .h`: contêm algumas cores no padrão da biblioteca ImGui que podem ser usadas na interface
+- `colors.cpp e .h`: contém algumas cores no padrão da biblioteca ImGui que podem ser usadas na interface
 
 - `font.h`: Fonte utilizada carregada na memória
 
