@@ -4,5 +4,5 @@
 
 namespace utils
 {
-    const std::string& truncaNome(const std::string& nome, const int larguraMax);
+    const std::string truncaNome(const std::string& nome, const int larguraMax);
 };

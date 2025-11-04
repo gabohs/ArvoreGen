@@ -4,7 +4,7 @@
 
 namespace utils
 {
-    const std::string& truncaNome(const std::string& nome, const int larguraMax)
+    const std::string truncaNome(const std::string& nome, const int larguraMax)
     {   
         float tamanhoNomeX = ImGui::CalcTextSize(nome.c_str()).x;
 
@@ -12,8 +12,8 @@ namespace utils
             return nome;
 
         std::string nomeTruncado = nome;
-        while (!nome.empty() && ImGui::CalcTextSize((nome + "...").c_str()).x > larguraMax)
-        {
+        while (!nomeTruncado.empty() && ImGui::CalcTextSize((nomeTruncado + "...").c_str()).x > larguraMax)
+        {   
             nomeTruncado.pop_back();
         }
         nomeTruncado+= "...";
