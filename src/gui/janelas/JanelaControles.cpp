@@ -35,18 +35,9 @@ void JControles::Renderiza()
 
 // -----------------------------------------------------------------------------------
 
-void JControles::desenhaTitulo(const char *texto)
-{
-    ImGui::SetWindowFontScale(1.1f);
-
-    ImGui::TextColored(Colors::Gray, texto);
-
-    ImGui::SetWindowFontScale(1.0f); // reseta
-}
-
 void JControles::secaoAdicionaPessoa()
 {
-    desenhaTitulo("Adicionar Pessoa");
+    ImGui::SeparatorText("Adicionar Pessoa");
     ImGui::Dummy(ImVec2(0, 5));
 
     static char nome[256]{};
@@ -87,7 +78,7 @@ void JControles::secaoAdicionaPessoa()
 
 void JControles::secaoDefineRelacao()
 {
-    desenhaTitulo("Definir Relações");
+    ImGui::SeparatorText("Definir Relações");
 
     static char nome[256]{};
     static char nomeMae[256]{};
@@ -145,7 +136,7 @@ void JControles::secaoDefineRelacao()
 
 void JControles::secaoBusca()
 {
-    desenhaTitulo("Buscar Pessoa");
+    ImGui::SeparatorText("Buscar Pessoa");
 
     static char nome[256]{};
 
@@ -266,7 +257,21 @@ void JControles::abrePainelInfoPessoa(const Pessoa* pessoa)
 
 void JControles::popupsErro()
 {
-    // popups de erro
+    // popups
+    if (ImGui::BeginPopup("PessoaAdc"))
+    {
+        ImGui::TextColored(Colors::Green, "Pessoa adicionada com sucesso!");
+
+        ImGui::EndPopup();
+    }
+
+    if (ImGui::BeginPopup("ErroAdc"))
+    {
+        ImGui::TextColored(Colors::Red, "Pessoa já está na arvore!");
+
+        ImGui::EndPopup();
+    }
+
     if (ImGui::BeginPopup("AvisoPNE")) 
     {
         ImGui::TextColored(Colors::Red, "Pessoa não encontrada!");
@@ -332,5 +337,13 @@ void JControles::secaoDebug()
 
 void JControles::AddPessoaGui(Pessoa* pessoa)
 {
-    m_Arvore.addPessoa(pessoa);
+    if (!m_Arvore.buscaPessoa(pessoa->getInfo().nome))
+    {
+        m_Arvore.addPessoa(pessoa);
+        ImGui::OpenPopup("PessoaAdc");
+    }
+    else
+    {
+        ImGui::OpenPopup("ErroAdc");
+    }     
 }

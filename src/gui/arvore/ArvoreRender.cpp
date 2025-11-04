@@ -217,7 +217,6 @@ void ArvoreRender::desenhaDescendentes(ImDrawList* drawList, Pessoa* pessoa, flo
     }
 }
 
-
 void ArvoreRender::infoNode(const ImVec2& VIRect, const ImVec2& VFRect, const std::string& nome) const
 {
     if (utils::mouseDentroDeRect(VIRect, VFRect))
@@ -225,6 +224,11 @@ void ArvoreRender::infoNode(const ImVec2& VIRect, const ImVec2& VFRect, const st
         ImGui::BeginTooltip();
         ImGui::TextUnformatted(nome.c_str());
         ImGui::EndTooltip();
+
+        if (ImGui::IsMouseClicked(ImGuiMouseButton_Left))
+        {
+            ImGui::SetClipboardText(nome.c_str());
+        }
     }
 }
 
