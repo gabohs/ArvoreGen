@@ -459,18 +459,19 @@ const NodeAttr getAttr() const
 
 #### Métodos públicos
 
-- 
-
+- `ExportaArvore(const std::string& caminho, ArvoreGenealogica* arvore)`: constructor que inicializa o caminho e a árvore
+- `bool salvaArvore()`: metódo que salva a árvore no caminho
+- `bool carregaArvore()`: carrega a árvore a partir do arquivo .csv
 #### Métodos privados
 
-
+- `std::vector<std::string> divideLinha(const std::string& linha)`: divide a linha do arquivo em partes (membro, pai, mae, filho1, filho2...).
 
 #### Membros privados
 
-- `std::string m_caminho`:
-- `std::ifstream m_input`:
-- `std::ofstream m_output`:
-- `ArvoreGenealogica* m_arvore`:
+- `std::string m_caminho`: caminho do arquivo para exportar e importar
+- `std::ifstream m_input`: fluxo entrada para carregar a arvore
+- `std::ofstream m_output`: fluxo saida para salvar a arvore
+- `ArvoreGenealogica* m_arvore`: pointer que aponta para ArvoreGenealogica
 
 ### 5.14 A classe Window
 
