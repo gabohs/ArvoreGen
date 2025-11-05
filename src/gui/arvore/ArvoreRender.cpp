@@ -223,12 +223,20 @@ void ArvoreRender::infoNode(const ImVec2& VIRect, const ImVec2& VFRect, const st
     {
         ImGui::BeginTooltip();
         ImGui::TextUnformatted(nome.c_str());
+        ImGui::TextColored(Colors::LightBlue, "Clique para copiar!");
         ImGui::EndTooltip();
 
         if (ImGui::IsMouseClicked(ImGuiMouseButton_Left))
         {
             ImGui::SetClipboardText(nome.c_str());
+            ImGui::OpenPopup("NomeCopiado");
         }
+    }
+
+    if (ImGui::BeginPopup("NomeCopiado"))
+    {
+        ImGui::TextColored(Colors::Green, "Nome completo copiado!");
+        ImGui::EndPopup();
     }
 }
 

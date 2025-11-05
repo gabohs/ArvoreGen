@@ -5,7 +5,7 @@
 - O processo de desenvolvimento foi iniciado no dia 15 de outubro de 2025.
    
 - Para facilitar a colaboração, a criaçao de diferentes branches foi feita.
-- Para alguns problemas encontrados foram feitas Issues, se o professor desejar olhar na aba Issues do repo.
+- Para alguns problemas encontrados foram feitas Issues, se o professor desejar, pode olhar na aba Issues do repo.
 
 ## 2. As branches
 
@@ -37,7 +37,7 @@
 
 ### 3.1 Pasta `src`
 
-- Contêm os arquivos .cpp e .h do projeto
+- Contém os arquivos .cpp e .h do projeto
 
 ### src/backend
 
@@ -73,7 +73,7 @@
 
 ### 3.2 Pasta `vendor`
 
-- Um *Vendor* é um adjetivo em inglês atribuido à uma pessoa ou empresa, indicando que esta vende serviços para clientes.
+- Um *Vendor* é um adjetivo em inglês atribuido a uma pessoa ou empresa, indicando que esta vende serviços para clientes.
 - A programação se apropria desse conceito e o utiliza para nomear uma pasta que contêm bibliotecas third-party. 
 
 
@@ -85,7 +85,7 @@
 
 - As janelas do ImGui são desenhadas em cima de uma janela gerada por um backend.
 - Existe uma branch do ImGui chamada docking, que permite fazer com que as janelas "grudem" na janela de fundo e sejam redimensionadas e reajeitadas na interface.
-- Uma coisa legal do ImGui é a possibilidade de escolher o backend. Você pode utilizar vulkan, opengl, sdl, sfml, directX... 
+- Uma coisa legal do ImGui é a possibilidade de escolher o backend. Você pode utilizar Vulkan, OpenGL, SDL, SFML, DirectX... 
 
 - Nesse projeto utilizamos OpenGL, com glfw.
 
@@ -99,11 +99,11 @@
 
 ## 5. Detalhamento da Estrutura do Projeto
 
-- Adendo: Não detalharei os getters e setters das classes (autoexplicativos), nem seu constructor e destructor, que são usados como normalmente sempre são (para inicialização e cleanup respectivamente).
+- Adendo: não detalharei os getters e setters das classes (autoexplicativos), nem seu constructor e destructor, que são usados como normalmente são (para inicialização e cleanup respectivamente).
 
 ### 5.1 a função main
 
-> Localização: src/core/main.cpp
+> Localização: [src/core/main.cpp](../src/core/main.cpp)
 
 - Começaremos nossa análise no main.cpp
 
@@ -114,15 +114,18 @@
 - Coordenadora do projeto
 - As informações do app são armazenadas na struct InfoApp
 
-> Definição: src/core/App.h
+> Definição: [src/core/App.h](../src/core/App.h)
 > 
-> Implementação: src/core/App.cpp
+> Implementação: [src/core/App.cpp](../src/core/App.h)
 
 #### Métodos públicos:
 
+- Constructor: `App(const DadosApp& dApp = DadosApp())`
+- Destructor: `~App()`
+
 #### `void Run()`
 
-- Contêm o loop principal da aplicacao
+- Contém o loop principal da aplicacao
 
 #### `void Stop()`
 
@@ -151,21 +154,35 @@
 
 ### 5.3 A interface IJanela
 
+#### Métodos públicos virtuais
+
+- Destructor: `virtual ~IJanela() = default`
+- Demais métodos: 
+```c++
+virtual void Renderiza() = 0;
+virtual const std::string& GetNome() const = 0;
+virtual bool IsOpen() const = 0;
+virtual void SetOpen(bool open) = 0
+```
+
 - É herdada por ambas as janelas (paineis) (JControles e JVisualizacao)
 
-> Definição: src/gui/GuiLayer.h
+> Definição: [src/gui/GuiLayer.h](../src/gui/GuiLayer.h)
 
 ### 5.4 A classe GuiLayer
 
-- É dona de todas as janelas, armazenada em um vector. 
+- É dona de todas as janelas, armazenadas em um vector. 
 - Possui tanto boilerplate do ImGui, quanto código para renderizar as janelas
 
-> Definição: src/gui/GuiLayer.h
+> Definição: [src/gui/GuiLayer.h](../src/gui/GuiLayer.h)
 > 
-> Implementação: src/gui/GuiLayer.cpp
+> Implementação: [src/gui/GuiLayer.cpp](../src/gui/GuiLayer.cpp)
 
 #### Métodos públicos
 
+- Constructor: `GuiLayer()`
+- Destructor: `~GuiLayer() = default`
+  
 #### `void Begin()`
 
 - Mais boilerplate do ImGui
@@ -184,7 +201,7 @@
 
 #### `void AddJanela(std::shared_ptr<IJanela> janela)`
 
-- Adiciona janela do vector de janelas
+- Adiciona janela no vector de janelas
 - Chamada no constructor da classe App
 
 #### Métodos privados
@@ -202,17 +219,39 @@
 - Seguindo o mesmo padrão da classe App, também temos uma struct com as informações da pessoa (InfoPessoa)
 - Essa classe é a representação de uma pessoa da árvore genealógica.
 
-> Definição: src/backend/Pessoa.h
+> Definição: [src/backend/Pessoa.h](../src/backend/Pessoa.h)
 > 
-> Implementação: src/backend/Pessoa.cpp
+> Implementação: [src/backend/Pessoa.cpp](../src/backend/Pessoa.cpp)
 
 #### Métodos públicos
 
-- A maioria dos métodos são getters e setters. Veja a implementação deles em Pessoa.cpp
+- Constructor: `Pessoa(InfoPessoa& iP)`
+- Getters e Setters:
+```c++
+void setPai(Pessoa* p);
+void setMae(Pessoa* m);
+Pessoa* getMae() const;
+Pessoa* getPai() const;
+const std::vector<Pessoa*>& getFilhos() const;
+const InfoPessoa& getInfo() const
+```
 
 #### `void addFilho(Pessoa* filho)`
 - Adiciona um filho no vector m_Filhos.
 - Verifica se o filho já existe. Se já estiver no vector, simplesmente não o adiciona novamente.
+
+
+#### `void removeFilho(Pessoa* filho)`
+
+- Remove _filho_ do vetor m_Filhos
+
+#### `bool removeMae()`
+
+- Remove a mãe e retorna true para abrir o popup depois. Somente retorna true se a mae não for nullptr incialmente.
+
+#### `bool removePai()`
+
+- Remove o pai e retorna true para abrir o popup depois. Somente retorna true se o pai não for nullptr incialmente.
 
 #### Membros privados
 
@@ -229,11 +268,17 @@
 - É a representação da Arvore Genealógica.
 - Utiliza um vector de Pessoa* para armazenar todas as pessoas da árvore
 
-> Definição: src/backend/ArvoreGenealogica.h
+> Definição: [src/backend/ArvoreGenealogica.h](../src/backend/ArvoreGenealogica.h)
 > 
-> Implementação: src/backend/ArvoreGenealogica.cpp
+> Implementação: [src/backend/ArvoreGenealogica.cpp](../src/backend/ArvoreGenealogica.cpp)
 
 #### Métodos públicos
+
+- Constructor: **Não**
+- Getters e Setters:
+```c++
+const std::vector<Pessoa*>& getPessoas() const;
+```
 
 #### `Pessoa* buscaPessoa(const std::string& nome) const`
 
@@ -242,6 +287,10 @@
 #### `void addPessoa(Pessoa* pessoa)`
 
 - Adiciona uma pessoa no vector m_Pessoas;
+
+#### `void resetaArvore()`
+
+- chama m_Pessoas.clear()
 
 #### `void printPessoas()`
 
@@ -254,15 +303,17 @@
 
 ### 5.7 A classe ArvoreRender
 
-- Contêm as funções usadas na renderização da árvore.
+- Contém as funções usadas na renderização da árvore.
 - É instanciada posteriormente na Janela de Visualização (JVisualizacao), e seus métodos são chamados por lá.
 - Armazena uma referência para ArvoreGenealogica, pois obviamente para desenhar é preciso ter as informações da árvore
 
-> Definição: src/gui/arvore/ArvoreRender.h
+> Definição: [src/gui/arvore/ArvoreRender.h](../src/gui/arvore/ArvoreRender.h)
 > 
-> Implementação: src/gui/arvore/ArvoreRender.cpp
+> Implementação: [src/gui/arvore/ArvoreRender.cpp](../src/gui/arvore/ArvoreRender.h)
 
 #### Métodos públicos
+
+- Constructor: `ArvoreRender(ArvoreGenealogica& arvore)`
 
 #### `void desenhaArvoreAPartirDeAncestral(const std::string& nomeAncestral, const ImVec2& origem)`
 
@@ -298,11 +349,18 @@
 - Um Node representa uma pessoa visualmente. É um quadrado que possui o nome da pessoa, seu ano de nascimento e gênero.
 - Node recebe um ponteiro da pessoa que ele representa pelo constructor
 
-> Definição: src/gui/arvore/Node.h
+> Definição: [src/gui/arvore/Node.h](../src/gui/arvore/Node.h)
 > 
-> Implementação: src/gui/arvore/ArvoreRender.cpp
+> Implementação: [src/gui/arvore/ArvoreRender.cpp](../src/gui/arvore/ArvoreRender.cpp)
 
 #### Métodos públicos
+
+- Constructor: `NodeArvore(Pessoa* pessoa)`
+- Getters e Setters:
+```c++
+const Pessoa* getPessoa() const;
+const NodeAttr getAttr() const
+```
 
 #### `void desenha(ImDrawList* drawList, ImVec2 verticeInicial, ImVec2 verticeFinal)`
 
@@ -317,18 +375,20 @@
 - `ImU32 cor`: cor do node
 
 
-### 5.9 A classe JControles
+### 5.9 A classe JControles (implementa IJanela)
 
 - Herda a interface IJanela
 - É a janela da esquerda, com os controles do aplicativo (adicionar pessoa, buscar pessoa, etc)
 
-> Definição: src/gui/janelas/JanelaControles.h
+> Definição: [src/gui/janelas/JanelaControles.h](../src/gui/janelas/JanelaControles.h)
 > 
-> Implementação: src/gui/janelas/JanelaControles.cpp
+> Implementação: [src/gui/janelas/JanelaControles.cpp](../src/gui/janelas/JanelaControles.cpp)
 
 #### Métodos públicos
 
-- Todos os da IJanela, em especial o Renderiza()
+- Constructor: `JControles(ArvoreGenealogica& arvore)`
+
+- Implementa Todos os da IJanela, em especial o Renderiza()
 
 #### Métodos privados
 
@@ -347,16 +407,18 @@
 
 - `ArvoreGenealogica& m_Arvore`: Referência para a ArvoreGenealogica
 
-### 5.10 A classe JVisualiza
+### 5.10 A classe JVisualizacao (implementa IJanela)
 
 - Também herda a interface IJanela
 - É a classe da janela que fica na direita, com a visualização da árvore
 
-> Definição: src/gui/janelas/JanelaVisualiza.h
+> Definição: [src/gui/janelas/JanelaVisualiza.h](../src/gui/janelas/JanelaVisualiza.h)
 > 
-> Implementação: src/gui/janelas/JanelaVisualiza.cpp
+> Implementação: [src/gui/janelas/JanelaVisualiza.cpp](../src/gui/janelas/JanelaVisualiza.cpp)
 
 #### Métodos públicos
+
+- Constructor: `JVisualizacao(ArvoreGenealogica& arvore)`
 
 - Todos os da IJanela, em especial o Renderiza()
 
@@ -371,7 +433,7 @@
 
 - Utilidades usadas no código de interface gráfica
 
-> Localização: src/gui/utils
+> Localização: [src/gui/utils](../src/gui/utils)
 
 - `centralizaScroll`: centraliza o scroll no canvas de visualização
 - `mouseDentroDeRect`: checa se o cursor do mouse está dentro de um rect (um rect é a forma geométrica de um Node). Serve para mostar o tooltip quando o mouse está sobre o node
@@ -379,7 +441,9 @@
 
 ### 5.12 A pasta theme
 
-- `colors.cpp e .h`: contêm algumas cores no padrão da biblioteca ImGui que podem ser usadas na interface
+> Localização: [src/gui/theme](../src/gui/theme)
+
+- `colors.cpp e .h`: contém algumas cores no padrão da biblioteca ImGui que podem ser usadas na interface
 
 - `font.h`: Fonte utilizada carregada na memória
 
@@ -389,9 +453,9 @@
 
 - É a classe que cuida da exportação e importação da árvore.
 
-> Definição: src/backend/save/ExportaArvore.h
+> Definição: [src/backend/save/ExportaArvore.h](../src/backend/save/ExportaArvore.h)
 > 
-> Implementação: src/backend/save/ExportaArvore.cpp
+> Implementação: [src/backend/save/ExportaArvore.cpp](../src/backend/save/ExportaArvore.cpp)
 
 #### Métodos públicos
 
@@ -412,9 +476,15 @@
 
 - É um wrapper de uma glfwWindow, para ficar mais organizado
 
-> Definição: src/core/Window/Window.h
+> Definição: [src/core/Window/Window.h](../src/core/Window/Window.h)
 > 
-> Implementação: src/core/Window/Window.cpp
+> Implementação: [src/core/Window/Window.cpp](../src/core/Window/Window.cpp)
+
+### 6. Adendos
+
+#### 6.1 O uso de static
+
+- Muitas das variáveis no código de interface gráfica são declaradas como `static`. Isso é necessário pois o código roda a cada frame, e sem usar static essas variáveis seriam redeclaradas sempre.
 
 ## REFERÊNCIAS
 
