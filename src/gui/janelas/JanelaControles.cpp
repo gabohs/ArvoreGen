@@ -148,7 +148,7 @@ void JControles::secaoDefineRelacao()
 
 void JControles::secaoExcluiRelacao()
 {
-    ImGui::SeparatorText("Definir Relações");
+    ImGui::SeparatorText("Excluir Relações");
 
     static char nome[256]{};
 
