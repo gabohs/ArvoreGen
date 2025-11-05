@@ -15,8 +15,6 @@ public:
     
     void printPessoas();
 
-    
-
     const std::vector<Pessoa*>& getPessoas() const;
 
 private:

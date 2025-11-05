@@ -120,6 +120,9 @@
 
 #### Métodos públicos:
 
+- Constructor: `App(const DadosApp& dApp = DadosApp())`
+- Destructor: `~App()`
+
 #### `void Run()`
 
 - Contém o loop principal da aplicacao
@@ -151,6 +154,17 @@
 
 ### 5.3 A interface IJanela
 
+#### Métodos públicos virtuais
+
+- Destructor: `virtual ~IJanela() = default`
+- Demais métodos: 
+```c++
+virtual void Renderiza() = 0;
+virtual const std::string& GetNome() const = 0;
+virtual bool IsOpen() const = 0;
+virtual void SetOpen(bool open) = 0
+```
+
 - É herdada por ambas as janelas (paineis) (JControles e JVisualizacao)
 
 > Definição: src/gui/GuiLayer.h
@@ -166,6 +180,9 @@
 
 #### Métodos públicos
 
+- Constructor: `GuiLayer()`
+- Destructor: `~GuiLayer() = default`
+  
 #### `void Begin()`
 
 - Mais boilerplate do ImGui
@@ -208,11 +225,33 @@
 
 #### Métodos públicos
 
-- A maioria dos métodos são getters e setters. Veja a implementação deles em Pessoa.cpp
+- Constructor: `Pessoa(InfoPessoa& iP)`
+- Getters e Setters:
+```c++
+void setPai(Pessoa* p);
+void setMae(Pessoa* m);
+Pessoa* getMae() const;
+Pessoa* getPai() const;
+const std::vector<Pessoa*>& getFilhos() const;
+const InfoPessoa& getInfo() const
+```
 
 #### `void addFilho(Pessoa* filho)`
 - Adiciona um filho no vector m_Filhos.
 - Verifica se o filho já existe. Se já estiver no vector, simplesmente não o adiciona novamente.
+
+
+#### `void removeFilho(Pessoa* filho)`
+
+- Remove _filho_ do vetor m_Filhos
+
+#### `bool removeMae()`
+
+- Remove a mãe e retorna true para abrir o popup depois. Somente retorna true se a mae não for nullptr incialmente.
+
+#### `bool removePai()`
+
+- Remove o pai e retorna true para abrir o popup depois. Somente retorna true se o pai não for nullptr incialmente.
 
 #### Membros privados
 
@@ -235,6 +274,12 @@
 
 #### Métodos públicos
 
+- Constructor: **Não**
+- Getters e Setters:
+```c++
+const std::vector<Pessoa*>& getPessoas() const;
+```
+
 #### `Pessoa* buscaPessoa(const std::string& nome) const`
 
 - Busca uma pessoa na árvore. Se ela existir, retorna um ponteiro para ela. Se não existir, simplesmente retorna nullptr.
@@ -242,6 +287,10 @@
 #### `void addPessoa(Pessoa* pessoa)`
 
 - Adiciona uma pessoa no vector m_Pessoas;
+
+#### `void resetaArvore()`
+
+- chama m_Pessoas.clear()
 
 #### `void printPessoas()`
 
@@ -263,6 +312,8 @@
 > Implementação: src/gui/arvore/ArvoreRender.cpp
 
 #### Métodos públicos
+
+- Constructor: `ArvoreRender(ArvoreGenealogica& arvore)`
 
 #### `void desenhaArvoreAPartirDeAncestral(const std::string& nomeAncestral, const ImVec2& origem)`
 
@@ -304,6 +355,13 @@
 
 #### Métodos públicos
 
+- Constructor: `NodeArvore(Pessoa* pessoa)`
+- Getters e Setters:
+```c++
+const Pessoa* getPessoa() const;
+const NodeAttr getAttr() const
+```
+
 #### `void desenha(ImDrawList* drawList, ImVec2 verticeInicial, ImVec2 verticeFinal)`
 
 - desenha o node
@@ -317,7 +375,7 @@
 - `ImU32 cor`: cor do node
 
 
-### 5.9 A classe JControles
+### 5.9 A classe JControles (implementa IJanela)
 
 - Herda a interface IJanela
 - É a janela da esquerda, com os controles do aplicativo (adicionar pessoa, buscar pessoa, etc)
@@ -328,7 +386,9 @@
 
 #### Métodos públicos
 
-- Todos os da IJanela, em especial o Renderiza()
+- Constructor: `JControles(ArvoreGenealogica& arvore)`
+
+- Implementa Todos os da IJanela, em especial o Renderiza()
 
 #### Métodos privados
 
@@ -347,7 +407,7 @@
 
 - `ArvoreGenealogica& m_Arvore`: Referência para a ArvoreGenealogica
 
-### 5.10 A classe JVisualiza
+### 5.10 A classe JVisualizacao (implementa IJanela)
 
 - Também herda a interface IJanela
 - É a classe da janela que fica na direita, com a visualização da árvore
@@ -357,6 +417,8 @@
 > Implementação: src/gui/janelas/JanelaVisualiza.cpp
 
 #### Métodos públicos
+
+- Constructor: `JVisualizacao(ArvoreGenealogica& arvore)`
 
 - Todos os da IJanela, em especial o Renderiza()
 
