@@ -393,6 +393,21 @@
 > 
 > Implementação: src/backend/save/ExportaArvore.cpp
 
+#### Métodos públicos
+
+- 
+
+#### Métodos privados
+
+
+
+#### Membros privados
+
+- `std::string m_caminho`:
+- `std::ifstream m_input`:
+- `std::ofstream m_output`:
+- `ArvoreGenealogica* m_arvore`:
+
 ### 5.14 A classe Window
 
 - É um wrapper de uma glfwWindow, para ficar mais organizado
