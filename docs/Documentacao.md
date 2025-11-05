@@ -459,12 +459,21 @@ const NodeAttr getAttr() const
 
 #### Métodos públicos
 
-- `ExportaArvore(const std::string& caminho, ArvoreGenealogica* arvore)`: constructor que inicializa o caminho e a árvore
-- `bool salvaArvore()`: metódo que salva a árvore no caminho
-- `bool carregaArvore()`: carrega a árvore a partir do arquivo .csv
+- Constructor: `ExportaArvore(const std::string& caminho, ArvoreGenealogica* arvore)`
+
+#### `bool salvaArvore()`
+
+- Metódo que salva a árvore no caminho
+  
+#### `bool carregaArvore()` 
+
+- Carrega a árvore a partir do arquivo .csv
+
 #### Métodos privados
 
-- `std::vector<std::string> divideLinha(const std::string& linha)`: divide a linha do arquivo em partes (membro, pai, mae, filho1, filho2...).
+#### `std::vector<std::string> divideLinha(const std::string& linha)`
+
+-  Divide a linha do arquivo em partes (membro, pai, mae, filho1, filho2...).
 
 #### Membros privados
 
