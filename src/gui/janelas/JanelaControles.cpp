@@ -21,13 +21,19 @@ void JControles::Renderiza()
         secaoDefineRelacao();
         ImGui::Dummy(ImVec2(0, 5));
 
+        secaoExcluiRelacao();
+        ImGui::Dummy(ImVec2(0, 5));
+
         secaoBusca();
+        ImGui::Dummy(ImVec2(0, 5));
+
+        secaoCritica();
         ImGui::Dummy(ImVec2(0, 10));
 
         secaoExporta();
         ImGui::Dummy(ImVec2(0, 10));
 
-        popupsErro();
+        popups();
         secaoDebug();
 
     ImGui::End();
@@ -38,7 +44,6 @@ void JControles::Renderiza()
 void JControles::secaoAdicionaPessoa()
 {
     ImGui::SeparatorText("Adicionar Pessoa");
-    ImGui::Dummy(ImVec2(0, 5));
 
     static char nome[256]{};
     static int anoNasc = 2000;
@@ -84,7 +89,6 @@ void JControles::secaoDefineRelacao()
     static char nomeMae[256]{};
     static char nomePai[256]{};
     
-
     ImGui::TextColored(Colors::DarkBlue, "Nome da pessoa:");
     ImGui::InputText("##NomeDR", nome, sizeof(nome));
 
@@ -99,9 +103,13 @@ void JControles::secaoDefineRelacao()
         Pessoa* mae = m_Arvore.buscaPessoa(std::string(nomeMae));
 
         if (pSelecionada == nullptr)
-            ImGui::OpenPopup("AvisoPNE"); // PNE = pessoa n encontrada ;)
+            ImGui::OpenPopup("AvisoPNE"); // PNE = pessoa n encontrada 
         else if (mae == nullptr)
             ImGui::OpenPopup("AvisoMaeNE");
+        else if (pSelecionada == mae)
+            ImGui::OpenPopup("AvisoMaeDelaMsm");
+        else if (mae == pSelecionada->getPai())
+            ImGui::OpenPopup("MaeEquPai");
         else 
         {   
             pSelecionada->setMae(mae);
@@ -125,6 +133,10 @@ void JControles::secaoDefineRelacao()
             ImGui::OpenPopup("AvisoPNE"); // PNE = pessoa n encontrada ;)
         else if (pai == nullptr)
             ImGui::OpenPopup("AvisoPaiNE");
+        else if (pSelecionada == pai)
+            ImGui::OpenPopup("AvisoPaiDelaMsm");
+        else if (pai == pSelecionada->getMae())
+            ImGui::OpenPopup("PaiEquMae");
         else
         {   
             pSelecionada->setPai(pai);
@@ -132,6 +144,58 @@ void JControles::secaoDefineRelacao()
             ImGui::OpenPopup("RelacaoSucesso");
         }
     }
+}
+
+void JControles::secaoExcluiRelacao()
+{
+    ImGui::SeparatorText("Excluir Relações");
+
+    static char nome[256]{};
+
+    ImGui::TextColored(Colors::DarkBlue, "Nome da pessoa:");
+    ImGui::InputText("##NomeP_ER", nome, sizeof(nome));
+
+    ImGui::PushStyleColor(ImGuiCol_Button, Colors::BrightRed);
+
+    if (ImGui::SmallButton("Excluir Mãe"))
+    {
+        Pessoa* pessoa = m_Arvore.buscaPessoa(std::string(nome));
+
+        if (pessoa == nullptr)
+            ImGui::OpenPopup("AvisoPNE");
+        else
+        {   
+            Pessoa* mae = pessoa->getMae();
+            mae->removeFilho(pessoa);
+
+            if (pessoa->removeMae())
+                ImGui::OpenPopup("MaeRemovida");
+            else
+                ImGui::OpenPopup("AvisoMNE");
+        }    
+    }
+
+    ImGui::SameLine();
+
+    if (ImGui::SmallButton("Excluir Pai"))
+    {
+        Pessoa* pessoa = m_Arvore.buscaPessoa(std::string(nome));
+
+        if (pessoa == nullptr)
+            ImGui::OpenPopup("AvisoPNE");
+        else
+        {
+            Pessoa* pai = pessoa->getPai();
+            pai->removeFilho(pessoa);
+
+            if (pessoa->removePai())
+                ImGui::OpenPopup("PaiRemovido");
+            else
+                ImGui::OpenPopup("AvisoPNE");
+        }
+    }
+
+    ImGui::PopStyleColor();
 }
 
 void JControles::secaoBusca()
@@ -160,6 +224,18 @@ void JControles::secaoBusca()
         abrePainelInfoPessoa(pSelecionada);    
 }
 
+void JControles::secaoCritica()
+{
+    ImGui::SeparatorText("Funções Críticas");
+
+    ImGui::PushStyleColor(ImGuiCol_Button, Colors::Red);
+    if (ImGui::Button("RESETAR ÁRVORE!"))
+    {
+        ImGui::OpenPopup("ConfirmaResetArvore");
+    }
+    ImGui::PopStyleColor();
+}
+
 void JControles::secaoExporta()
 {
     ImGui::SeparatorText("Salvar/Carregar Árvore");
@@ -173,7 +249,7 @@ void JControles::secaoExporta()
 
     if (ImGui::Button("Salvar Árvore", ImVec2(150, 0)))
     {   
-        std::string arquivo = std::string(nomeArquivo) + ".csv";
+        std::string arquivo = "saves/" + std::string(nomeArquivo) + ".csv";
         ExportaArvore exportador(arquivo, &m_Arvore);
 
         if (exportador.salvaArvore())
@@ -186,11 +262,13 @@ void JControles::secaoExporta()
 
     if (ImGui::Button("Carregar Árvore", ImVec2(150, 0)))
     {   
-        std::string arquivo = std::string(nomeArquivo) + ".csv";
+        std::string arquivo = "saves/"  + std::string(nomeArquivo) + ".csv";
         ExportaArvore exportador(arquivo, &m_Arvore);
 
         if (exportador.carregaArvore())
+        {
             ImGui::OpenPopup("ArquivoCarregado");
+        }  
         else
             ImGui::OpenPopup("ErroCarregar");
     }
@@ -200,7 +278,8 @@ void JControles::secaoExporta()
 
 void JControles::abrePainelInfoPessoa(const Pessoa* pessoa)
 {   
-    // gambiarra do krai pra abrir janelinha de busca
+    // codigo feio do krai pra abrir janelinha de busca, seria melhor criar outra classe, mas 
+    // a arquitetura n permite que uma janela controle a abertura de outra, e não vou mudar isso agora.
     
     ImGui::SetNextWindowSize(ImVec2(350, 350));
     ImGui::Begin("InfoPessoa", &m_PainelInfoPessoaAberto, ImGuiWindowFlags_AlwaysAutoResize);
@@ -220,7 +299,9 @@ void JControles::abrePainelInfoPessoa(const Pessoa* pessoa)
         ImGui::SameLine();
         ImGui::Text( std::to_string(pessoa->getInfo().anoNascimento).c_str() );
 
-        ImGui::Dummy(ImVec2(0, 2));
+        ImGui::Dummy(ImVec2(0, 1));
+        ImGui::Separator();
+        ImGui::Dummy(ImVec2(0, 1));
 
         ImGui::TextColored(Colors::Gray, "Pai: ");
         ImGui::SameLine();
@@ -237,6 +318,10 @@ void JControles::abrePainelInfoPessoa(const Pessoa* pessoa)
             ImGui::Text( pessoa->getMae()->getInfo().nome.c_str() );
         else
             ImGui::TextColored(Colors::Red, "Não registrada");
+
+        ImGui::Dummy(ImVec2(0, 1));
+        ImGui::Separator();
+        ImGui::Dummy(ImVec2(0, 1));
 
         ImGui::TextColored(Colors::Gray, "Filhos: ");
 
@@ -255,7 +340,7 @@ void JControles::abrePainelInfoPessoa(const Pessoa* pessoa)
     ImGui::End();
 }
 
-void JControles::popupsErro()
+void JControles::popups()
 {
     // popups
     if (ImGui::BeginPopup("PessoaAdc"))
@@ -293,6 +378,20 @@ void JControles::popupsErro()
         ImGui::EndPopup();
     }
 
+    if (ImGui::BeginPopup("AvisoMaeDelaMsm"))
+    {   
+        ImGui::TextColored(Colors::Red, "Pessoa não pode ser mãe dela mesma!");
+
+        ImGui::EndPopup();
+    }
+
+    if (ImGui::BeginPopup("AvisoPaiDelaMsm"))
+    {   
+        ImGui::TextColored(Colors::Red, "Pessoa não pode ser pai dela mesma!");
+
+        ImGui::EndPopup();
+    }
+
     if (ImGui::BeginPopup("RelacaoSucesso"))
     {
         ImGui::TextColored(Colors::Green, "Relação definida com sucesso!");
@@ -321,6 +420,44 @@ void JControles::popupsErro()
     if (ImGui::BeginPopup("ErroCarregar"))
     {
         ImGui::TextColored(Colors::Red, "Erro ao carregar a árvore!");
+        ImGui::EndPopup();
+    }
+
+    if (ImGui::BeginPopup("MaeRemovida"))
+    {
+        ImGui::TextColored(Colors::Green, "Mãe removida!");
+        ImGui::EndPopup();
+    }
+
+    if (ImGui::BeginPopup("PaiRemovido"))
+    {
+        ImGui::TextColored(Colors::Green, "Pai removido!");
+        ImGui::EndPopup();
+    }
+
+    if (ImGui::BeginPopup("MaeEquPai"))
+    {
+        ImGui::TextColored(Colors::Red, "Mãe não pode ser igual ao pai");
+        ImGui::EndPopup();
+    }
+
+    if (ImGui::BeginPopup("PaiEquMae"))
+    {
+        ImGui::TextColored(Colors::Red, "Pai não pode ser igual a mãe");
+        ImGui::EndPopup();
+    }
+
+    if (ImGui::BeginPopup("ConfirmaResetArvore"))
+    {   
+        ImGui::Text("Isso deletará toda a estrutra! Confirma?");
+
+        ImGui::PushStyleColor(ImGuiCol_Button, Colors::Aqua);
+
+        if (ImGui::SmallButton("Confirmo")) 
+            m_Arvore.resetaArvore();
+        
+        ImGui::PopStyleColor();
+
         ImGui::EndPopup();
     }
 }

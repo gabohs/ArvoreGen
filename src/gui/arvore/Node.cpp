@@ -4,7 +4,7 @@
 #include "../utils/truncaNome.h"
 
 NodeArvore::NodeArvore(Pessoa *pessoa)
-    : m_Pessoa(pessoa), cor(ImGui::ColorConvertFloat4ToU32(Colors::Aqua))
+    : m_Pessoa(pessoa), cor(ImGui::ColorConvertFloat4ToU32(Colors::LightBlue))
 {   
 }
 

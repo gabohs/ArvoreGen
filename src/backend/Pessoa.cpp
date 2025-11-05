@@ -24,6 +24,31 @@ Pessoa* Pessoa::getPai() const
     return m_Pai;
 }
 
+void Pessoa::removeFilho(Pessoa* filho)
+{
+    m_Filhos.erase(std::remove(m_Filhos.begin(), m_Filhos.end(), filho), m_Filhos.end());
+}
+
+bool Pessoa::removeMae()
+{   
+    if (!this->getMae())
+        return false;
+
+    m_Mae = nullptr;
+
+    return true;
+}
+
+bool Pessoa::removePai()
+{
+    if (!this->getPai())
+        return false;
+
+    m_Pai = nullptr;
+
+    return true;
+}
+
 const std::vector<Pessoa*>& Pessoa::getFilhos() const
 {
     return m_Filhos;

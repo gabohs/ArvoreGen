@@ -18,6 +18,11 @@ void ArvoreGenealogica::addPessoa(Pessoa *pessoa)
     m_Pessoas.push_back(pessoa);
 }
 
+void ArvoreGenealogica::resetaArvore()
+{
+    m_Pessoas.clear();
+}
+
 void ArvoreGenealogica::printPessoas()
 {   
     std::cout << "==== [ESTRUTURA ATUAL DA ARVORE] ====" << std::endl;
@@ -29,6 +34,8 @@ void ArvoreGenealogica::printPessoas()
     }
     std::cout << "=====================================" << std::endl << std::endl;
 }
+
+
 
 const std::vector<Pessoa*> &ArvoreGenealogica::getPessoas() const
 {

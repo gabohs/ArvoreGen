@@ -21,6 +21,10 @@ public:
     Pessoa* getMae() const;
     Pessoa* getPai() const;
 
+    void removeFilho(Pessoa* filho);
+    bool removeMae();
+    bool removePai();
+
     const std::vector<Pessoa*>& getFilhos() const;
 
     void addFilho(Pessoa* filho);

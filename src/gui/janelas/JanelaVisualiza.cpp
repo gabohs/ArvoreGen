@@ -65,11 +65,13 @@ void JVisualizacao::Renderiza()
         if (tipoSelecionado == 0)
         {   
             ImGui::SetCursorPos(ImVec2(tamanhoCanvas.x / 2.0f, 150.f)); // cursor no topo
-
             m_aRender.desenhaArvoreAPartirDeAncestral(nome, ImGui::GetCursorScreenPos());
 
             if (!renderizou1vez) // roda apenas na primeira vez
+            {
                 utils::centralizaScrollEmX(); 
+                renderizou1vez = true;
+            }        
         }
             
         else if (tipoSelecionado == 1)
@@ -78,7 +80,10 @@ void JVisualizacao::Renderiza()
             m_aRender.desenhaArvoreAscendentesEDescendentes(nome, ImGui::GetCursorScreenPos());
 
             if (!renderizou1vez)
+            {
                 utils::centralizaScrollEmXY(); // tambem roda apenas uma vez
+                renderizou1vez = true;
+            }   
         }
     }
     

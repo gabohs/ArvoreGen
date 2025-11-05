@@ -27,13 +27,9 @@ bool ExportaArvore::salvaArvore()
             
         m_output << info.nome << ","
                 << info.anoNascimento << ","
-                << info.genero;
-
-        if(!pai.empty())
-            m_output << "," << pai;
-
-        if(!mae.empty())
-            m_output << "," << mae;
+                << info.genero
+                << "," << pai
+                << "," << mae;
         
         for (Pessoa* filho : p->getFilhos())
         {
@@ -50,7 +46,9 @@ bool ExportaArvore::salvaArvore()
 }
 
 bool ExportaArvore::carregaArvore()
-{   
+{       
+    m_arvore->resetaArvore(); // reseta arvore antes de carregar, se n buga tudo 
+
     m_input.open(m_caminho, std::ios::in);
     if (!m_input.is_open() || !m_arvore) return false;
 
