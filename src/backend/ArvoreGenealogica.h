@@ -10,10 +10,15 @@ public:
     Pessoa* buscaPessoa(const std::string& nome) const;
 
     void addPessoa(Pessoa* pessoa);
+
+    void resetaArvore();
+    
     void printPessoas();
+
+    
 
     const std::vector<Pessoa*>& getPessoas() const;
 
 private:
-    std::vector<Pessoa*> m_Pessoas;
+    std::vector<Pessoa*> m_Pessoas; 
 };

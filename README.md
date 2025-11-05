@@ -2,9 +2,9 @@
 
 - Projeto feito por Emanuel e Gabriel para a disciplina de Linguagem de Programação (2º semestre) do curso de ADS no IFRS
 
-![App arvore gen](docs/img/appV4.png)
+![App arvore gen](docs/img/appV5.png)
 
-<small>Foto do estado atual do projeto (29/10/2025)</small>
+<small>Foto do estado atual do projeto (05/11/2025)</small>
 
 ## Documentação
 
@@ -20,23 +20,16 @@ Implementar um sistema em C++ para representar e manipular uma árvore genealóg
 Funcionalidades obrigatórias
 
 - Adicionar pessoa (nome, ano de nascimento, gênero).
-
 - Definir relação entre duas pessoas (pai/mãe e filho).
-
 - Exibir descendentes e ascendentes de uma pessoa.
-
 - Listar toda a árvore a partir de um ancestral principal.
-
 - Buscar pessoa por nome.
 
 Funcionalidades opcionais
 
 - Exibir nível de parentesco entre duas pessoas (distância em nós).
-
 - Contar o número de descendentes diretos e indiretos.
-
 - Mostrar gerações separadas por nível.
-
 - Gravar e carregar a árvore de um arquivo texto.
 ```
 
@@ -46,7 +39,7 @@ Funcionalidades opcionais
 
 - **Visando facilitar o processo para o professor, na branch `build` foi feito o upload da pasta build com o executável já buildado.**
 
-Então, faça o download do projeto, [clicando aqui!](https://github.com/gabohs/ArvoreGen/archive/refs/heads/build.zip)
+Faça o download do projeto (branch build), [clicando aqui!](https://github.com/gabohs/ArvoreGen/archive/refs/heads/build.zip)
 
 ---
 

@@ -31,11 +31,14 @@ public:
 private:
     void secaoAdicionaPessoa();
     void secaoDefineRelacao();
+    void secaoExcluiRelacao();
 
     void secaoBusca();
+    void secaoCritica(); // funcoes críticas, como resetar a arovre
+
     void abrePainelInfoPessoa(const Pessoa* pessoa);
 
-    void popupsErro();
+    void popups();
     void secaoDebug();
 
     void AddPessoaGui(Pessoa* pessoa);
