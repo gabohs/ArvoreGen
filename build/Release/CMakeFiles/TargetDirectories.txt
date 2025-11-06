@@ -1,0 +1,12 @@
+C:/dev/CPP/PROJECTS/ArvoreGen/build/Release/CMakeFiles/imgui.dir
+C:/dev/CPP/PROJECTS/ArvoreGen/build/Release/CMakeFiles/ArvoreGen.dir
+C:/dev/CPP/PROJECTS/ArvoreGen/build/Release/CMakeFiles/INSTALL.dir
+C:/dev/CPP/PROJECTS/ArvoreGen/build/Release/CMakeFiles/ALL_BUILD.dir
+C:/dev/CPP/PROJECTS/ArvoreGen/build/Release/CMakeFiles/ZERO_CHECK.dir
+C:/dev/CPP/PROJECTS/ArvoreGen/build/Release/vendor/glfw/CMakeFiles/uninstall.dir
+C:/dev/CPP/PROJECTS/ArvoreGen/build/Release/vendor/glfw/CMakeFiles/INSTALL.dir
+C:/dev/CPP/PROJECTS/ArvoreGen/build/Release/vendor/glfw/CMakeFiles/ALL_BUILD.dir
+C:/dev/CPP/PROJECTS/ArvoreGen/build/Release/vendor/glfw/src/CMakeFiles/glfw.dir
+C:/dev/CPP/PROJECTS/ArvoreGen/build/Release/vendor/glfw/src/CMakeFiles/update_mappings.dir
+C:/dev/CPP/PROJECTS/ArvoreGen/build/Release/vendor/glfw/src/CMakeFiles/INSTALL.dir
+C:/dev/CPP/PROJECTS/ArvoreGen/build/Release/vendor/glfw/docs/CMakeFiles/INSTALL.dir

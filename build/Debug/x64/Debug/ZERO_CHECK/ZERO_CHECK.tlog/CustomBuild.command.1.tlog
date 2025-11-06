@@ -1,0 +1,10 @@
+^C:\DEV\CPP\PROJECTS\ARVOREGEN\BUILD\DEBUG\CMAKEFILES\A6A7464EBEE17598EC7D904D4B1EB361\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/dev/CPP/PROJECTS/ArvoreGen -BC:/dev/CPP/PROJECTS/ArvoreGen/build/Debug --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/dev/CPP/PROJECTS/ArvoreGen/build/Debug/ArvoreGen.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

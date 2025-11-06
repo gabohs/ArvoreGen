@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\dev\CPP\PROJECTS\ArvoreGen\src\core\Window\Window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\dev\CPP\PROJECTS\ArvoreGen\src\core\App.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\dev\CPP\PROJECTS\ArvoreGen\src\core\Run.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\dev\CPP\PROJECTS\ArvoreGen\src\core\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\dev\CPP\PROJECTS\ArvoreGen\src\backend\Pessoa.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\dev\CPP\PROJECTS\ArvoreGen\src\backend\ArvoreGenealogica.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\dev\CPP\PROJECTS\ArvoreGen\src\backend\save\ExportaArvore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\dev\CPP\PROJECTS\ArvoreGen\src\gui\theme\StyleManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\dev\CPP\PROJECTS\ArvoreGen\src\gui\theme\colors.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\dev\CPP\PROJECTS\ArvoreGen\src\gui\GuiLayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\dev\CPP\PROJECTS\ArvoreGen\src\gui\janelas\JanelaControles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\dev\CPP\PROJECTS\ArvoreGen\src\gui\janelas\JanelaVisualiza.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\dev\CPP\PROJECTS\ArvoreGen\src\gui\arvore\Node.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\dev\CPP\PROJECTS\ArvoreGen\src\gui\arvore\ArvoreRender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\dev\CPP\PROJECTS\ArvoreGen\src\gui\utils\mouse.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\dev\CPP\PROJECTS\ArvoreGen\src\gui\utils\truncaNome.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\dev\CPP\PROJECTS\ArvoreGen\src\gui\utils\centralizaScroll.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\dev\CPP\PROJECTS\ArvoreGen\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{2F8BB1DE-F1B8-33E8-A21F-65855F57E6CF}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

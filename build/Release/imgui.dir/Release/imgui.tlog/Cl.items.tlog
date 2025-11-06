@@ -1,0 +1,7 @@
+C:\dev\CPP\PROJECTS\ArvoreGen\vendor\imgui\imgui.cpp;C:\dev\CPP\PROJECTS\ArvoreGen\build\Release\imgui.dir\Release\imgui.obj
+C:\dev\CPP\PROJECTS\ArvoreGen\vendor\imgui\imgui_draw.cpp;C:\dev\CPP\PROJECTS\ArvoreGen\build\Release\imgui.dir\Release\imgui_draw.obj
+C:\dev\CPP\PROJECTS\ArvoreGen\vendor\imgui\imgui_widgets.cpp;C:\dev\CPP\PROJECTS\ArvoreGen\build\Release\imgui.dir\Release\imgui_widgets.obj
+C:\dev\CPP\PROJECTS\ArvoreGen\vendor\imgui\imgui_tables.cpp;C:\dev\CPP\PROJECTS\ArvoreGen\build\Release\imgui.dir\Release\imgui_tables.obj
+C:\dev\CPP\PROJECTS\ArvoreGen\vendor\imgui\imgui_demo.cpp;C:\dev\CPP\PROJECTS\ArvoreGen\build\Release\imgui.dir\Release\imgui_demo.obj
+C:\dev\CPP\PROJECTS\ArvoreGen\vendor\imgui\backends\imgui_impl_glfw.cpp;C:\dev\CPP\PROJECTS\ArvoreGen\build\Release\imgui.dir\Release\imgui_impl_glfw.obj
+C:\dev\CPP\PROJECTS\ArvoreGen\vendor\imgui\backends\imgui_impl_opengl3.cpp;C:\dev\CPP\PROJECTS\ArvoreGen\build\Release\imgui.dir\Release\imgui_impl_opengl3.obj

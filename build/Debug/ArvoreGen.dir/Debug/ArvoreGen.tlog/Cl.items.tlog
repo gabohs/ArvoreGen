@@ -1,0 +1,17 @@
+C:\dev\CPP\PROJECTS\ArvoreGen\src\core\Window\Window.cpp;C:\dev\CPP\PROJECTS\ArvoreGen\build\Debug\ArvoreGen.dir\Debug\Window.obj
+C:\dev\CPP\PROJECTS\ArvoreGen\src\core\App.cpp;C:\dev\CPP\PROJECTS\ArvoreGen\build\Debug\ArvoreGen.dir\Debug\App.obj
+C:\dev\CPP\PROJECTS\ArvoreGen\src\core\Run.cpp;C:\dev\CPP\PROJECTS\ArvoreGen\build\Debug\ArvoreGen.dir\Debug\Run.obj
+C:\dev\CPP\PROJECTS\ArvoreGen\src\core\main.cpp;C:\dev\CPP\PROJECTS\ArvoreGen\build\Debug\ArvoreGen.dir\Debug\main.obj
+C:\dev\CPP\PROJECTS\ArvoreGen\src\backend\Pessoa.cpp;C:\dev\CPP\PROJECTS\ArvoreGen\build\Debug\ArvoreGen.dir\Debug\Pessoa.obj
+C:\dev\CPP\PROJECTS\ArvoreGen\src\backend\ArvoreGenealogica.cpp;C:\dev\CPP\PROJECTS\ArvoreGen\build\Debug\ArvoreGen.dir\Debug\ArvoreGenealogica.obj
+C:\dev\CPP\PROJECTS\ArvoreGen\src\backend\save\ExportaArvore.cpp;C:\dev\CPP\PROJECTS\ArvoreGen\build\Debug\ArvoreGen.dir\Debug\ExportaArvore.obj
+C:\dev\CPP\PROJECTS\ArvoreGen\src\gui\theme\StyleManager.cpp;C:\dev\CPP\PROJECTS\ArvoreGen\build\Debug\ArvoreGen.dir\Debug\StyleManager.obj
+C:\dev\CPP\PROJECTS\ArvoreGen\src\gui\theme\colors.cpp;C:\dev\CPP\PROJECTS\ArvoreGen\build\Debug\ArvoreGen.dir\Debug\colors.obj
+C:\dev\CPP\PROJECTS\ArvoreGen\src\gui\GuiLayer.cpp;C:\dev\CPP\PROJECTS\ArvoreGen\build\Debug\ArvoreGen.dir\Debug\GuiLayer.obj
+C:\dev\CPP\PROJECTS\ArvoreGen\src\gui\janelas\JanelaControles.cpp;C:\dev\CPP\PROJECTS\ArvoreGen\build\Debug\ArvoreGen.dir\Debug\JanelaControles.obj
+C:\dev\CPP\PROJECTS\ArvoreGen\src\gui\janelas\JanelaVisualiza.cpp;C:\dev\CPP\PROJECTS\ArvoreGen\build\Debug\ArvoreGen.dir\Debug\JanelaVisualiza.obj
+C:\dev\CPP\PROJECTS\ArvoreGen\src\gui\arvore\Node.cpp;C:\dev\CPP\PROJECTS\ArvoreGen\build\Debug\ArvoreGen.dir\Debug\Node.obj
+C:\dev\CPP\PROJECTS\ArvoreGen\src\gui\arvore\ArvoreRender.cpp;C:\dev\CPP\PROJECTS\ArvoreGen\build\Debug\ArvoreGen.dir\Debug\ArvoreRender.obj
+C:\dev\CPP\PROJECTS\ArvoreGen\src\gui\utils\mouse.cpp;C:\dev\CPP\PROJECTS\ArvoreGen\build\Debug\ArvoreGen.dir\Debug\mouse.obj
+C:\dev\CPP\PROJECTS\ArvoreGen\src\gui\utils\truncaNome.cpp;C:\dev\CPP\PROJECTS\ArvoreGen\build\Debug\ArvoreGen.dir\Debug\truncaNome.obj
+C:\dev\CPP\PROJECTS\ArvoreGen\src\gui\utils\centralizaScroll.cpp;C:\dev\CPP\PROJECTS\ArvoreGen\build\Debug\ArvoreGen.dir\Debug\centralizaScroll.obj

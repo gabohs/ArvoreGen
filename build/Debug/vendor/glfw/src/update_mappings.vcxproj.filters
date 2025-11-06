@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\dev\CPP\PROJECTS\ArvoreGen\build\Debug\CMakeFiles\7ec82cbc2536975452c4181f932d0b7c\update_mappings.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\dev\CPP\PROJECTS\ArvoreGen\vendor\glfw\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\dev\CPP\PROJECTS\ArvoreGen\vendor\glfw\src\mappings.h.in">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\dev\CPP\PROJECTS\ArvoreGen\vendor\glfw\CMake\GenerateMappings.cmake" />
+    <None Include="C:\dev\CPP\PROJECTS\ArvoreGen\build\Debug\vendor\glfw\src\CMakeFiles\update_mappings" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{57C77B4B-3436-302E-AF97-B960A5E10517}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{F9B13625-F763-3F73-BB73-7886E5A13092}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

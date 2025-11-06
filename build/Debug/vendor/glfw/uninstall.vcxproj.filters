@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\dev\CPP\PROJECTS\ArvoreGen\build\Debug\CMakeFiles\9d98858f0ae79434a3e9fc98cdc51e88\uninstall.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\dev\CPP\PROJECTS\ArvoreGen\vendor\glfw\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\dev\CPP\PROJECTS\ArvoreGen\build\Debug\vendor\glfw\CMakeFiles\uninstall" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{57C77B4B-3436-302E-AF97-B960A5E10517}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
