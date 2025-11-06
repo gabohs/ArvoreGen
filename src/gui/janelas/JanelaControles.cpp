@@ -36,6 +36,16 @@ void JControles::Renderiza()
         popups();
         secaoDebug();
 
+        ImGui::Dummy(ImVec2(0, 5));
+        ImGui::Text("Feito por");
+        ImGui::SameLine();
+        ImGui::TextLinkOpenURL("Gabriel H. Schaeffer", "https://github.com/gabohs");
+        ImGui::SameLine();
+        ImGui::Text("e");
+        ImGui::SameLine();
+        ImGui::TextLinkOpenURL("Emanuel D. Tonial", "https://github.com/manutonial");
+
+
     ImGui::End();
 }
 
